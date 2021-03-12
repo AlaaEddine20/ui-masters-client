@@ -21,7 +21,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(login(userData));
+    dispatch(login(userData));
   };
 
   return (
@@ -43,7 +43,9 @@ const Login = () => {
             type="password"
             placeholder="Password"
           />
-          <input type="submit" value="Login" />
+          <button type="submit" value="Login">
+            Login
+          </button>
           <div>
             Don't have an account?
             <Link to="/register">
