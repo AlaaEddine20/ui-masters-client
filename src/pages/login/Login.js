@@ -8,42 +8,34 @@ import { useDispatch } from "react-redux";
 import styles from "./Login.module.scss";
 
 const Login = () => {
-  const initialState = { email: "", password: "" };
-  const [userData, setUserData] = useState(initialState);
-  const { email, password } = userData;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
-  };
+  // const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(userData));
+    // dispatch(login(userData));
   };
 
   return (
     <>
       <div className={styles.login}>
-        <form onChange={handleSubmit} className={styles.form_wrapper}>
+        <form className={styles.form_wrapper}>
           <h1>Login</h1>
           <input
-            onChange={handleChange}
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
-            name="email"
             type="email"
             placeholder="Email"
           />
           <input
-            onChange={handleChange}
+            onChange={(e) => setPassword(e.target.value)}
             value={password}
-            name="password"
             type="password"
             placeholder="Password"
           />
-          <button type="submit" value="Login">
+          <button onClick={handleSubmit} type="submit" value="Login">
             Login
           </button>
           <div>

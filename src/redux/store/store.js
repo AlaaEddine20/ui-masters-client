@@ -1,28 +1,17 @@
-import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import { authReducer } from "../reducers/authReducer";
+import rootReducer from "../reducers";
 
 const composedEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const initialState = {
-  user: {
-    name: "",
-    lastname: "",
-    email: "",
-    password: "",
-    profilePic: "",
-    likedPosts: [],
-  },
-};
+const middleware = [thunk];
 
-const combinedReducers = combineReducers({
-  authReducer,
-});
+export const initialState = {};
 
-export default function configureStore() {
-  return createStore(
-    combinedReducers,
-    initialState,
-    composedEnhancer(applyMiddleware(thunk))
-  );
-}
+const store = createStore(
+  rootReducer,
+  initialState,
+  composedEnhancer(applyMiddleware(...middleware))
+);
+
+export default store;
