@@ -8,7 +8,7 @@
 
 .form_wrapper {
   width: 350px;
-  height: 450px;
+  height: 430px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,12 +17,15 @@
   border-radius: 2%;
 
   h1 {
-    color: #ecedf1;
+    color: #eae9ef;
   }
 
   small {
     cursor: pointer;
     color: #f6f7f9;
+    position: relative;
+    bottom: 40px;
+    left: 165px;
   }
 
   input {
@@ -31,6 +34,16 @@
     border: none;
     outline: 0;
     border-bottom: 1px solid #35bea7;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    color: #eae9ef;
+  }
+
+  input::placeholder {
+    color: #f6f7f977;
+    font-size: 0.8rem;
   }
 
   button {
