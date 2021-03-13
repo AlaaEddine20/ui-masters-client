@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { login } from "../../redux/actions/authAction";
 import { useDispatch, useSelector } from "react-redux";
 // Styles
+import { Spinner } from "react-bootstrap";
 import styles from "./Login.module.scss";
 
 const Login = () => {
@@ -17,7 +18,8 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
-  console.log(user);
+  const isLoading = useSelector((state) => state.authReducer.isLoading);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login(userLoginData));
@@ -27,7 +29,11 @@ const Login = () => {
     setUserLoginData({ ...userLoginData, [e.target.name]: e.target.value });
   };
 
-  return (
+  return isLoading ? (
+    <div className={styles.spinner}>
+      <Spinner animation="grow" variant="info" />
+    </div>
+  ) : (
     <>
       <div className={styles.login}>
         <form
@@ -35,7 +41,7 @@ const Login = () => {
           onSubmit={handleSubmit}
           className={styles.form_wrapper}
         >
-          <h1 className="mb-5">UI Masters</h1>
+          <h1 className="mb-5">UI MASTERS</h1>
           <div className={styles.inputs}>
             <input
               className="mb-3"
@@ -61,18 +67,21 @@ const Login = () => {
             <p
               style={{
                 color: "#f6f7f9",
-                fontSize: "0.8rem",
+                fontSize: "0.9rem",
+                letterSpacing: "0.1rem",
               }}
             >
               Don't have an account?
             </p>
             <Link
               style={{
-                color: "#9175f3",
-                fontSize: "0.9rem",
+                color: "#744bd7",
+                fontSize: "1rem",
+                fontWeight: "400",
                 position: "relative",
-                left: 150,
+                left: 125,
                 textDecoration: "none",
+                letterSpacing: "0.1rem",
               }}
               to="/register"
             >

@@ -20,7 +20,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         ...payload,
         isLoggedIn: true,
-        isLoading: false,
+        isLoading: true,
         error: false,
       };
 
