@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 // Router
 import { Link } from "react-router-dom";
 // Redux
-import { login, userLoaded } from "../../redux/actions/authAction";
-import { useDispatch } from "react-redux";
+import { login } from "../../redux/actions/authAction";
+import { useDispatch, useSelector } from "react-redux";
 // Styles
 import styles from "./Login.module.scss";
 
@@ -13,23 +13,15 @@ const Login = () => {
     password: "",
   });
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-
   const [showPwt, setShowPwt] = useState(false);
 
   const dispatch = useDispatch();
-
+  const user = useSelector((state) => state.authReducer.user);
+  console.log(user);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login(userLoginData));
-    setIsUserLoggedIn(true);
   };
-
-  //  useEffect(() => {
-  //   if (isUserLoggedIn) {
-  //     dispatch(userLoaded(userLoginData));
-  //   }
-  // }, []);
 
   const handleChange = (e) => {
     setUserLoginData({ ...userLoginData, [e.target.name]: e.target.value });
@@ -43,7 +35,7 @@ const Login = () => {
           onSubmit={handleSubmit}
           className={styles.form_wrapper}
         >
-          <h1 className="mb-5">Login</h1>
+          <h1 className="mb-5">UI Masters</h1>
           <div className={styles.inputs}>
             <input
               className="mb-3"
@@ -70,18 +62,17 @@ const Login = () => {
               style={{
                 color: "#f6f7f9",
                 fontSize: "0.8rem",
-                position: "relative",
-                right: 35,
               }}
             >
               Don't have an account?
             </p>
             <Link
               style={{
-                color: "#face73",
+                color: "#9175f3",
                 fontSize: "0.9rem",
                 position: "relative",
-                left: 80,
+                left: 150,
+                textDecoration: "none",
               }}
               to="/register"
             >

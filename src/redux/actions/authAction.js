@@ -1,26 +1,32 @@
 import {
   AUTH_FAIL,
   AUTH_SUCCESS,
-  USER_LOADED,
-  USER_IS_LOGGEDOUT,
+  AUTH_LOADING,
+  AUTH_LOGOUT,
 } from "../constants/authConstants";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 export const userLoaded = () => async (dispatch) => {
   try {
+    dispatch({
+      type: AUTH_LOADING,
+    });
+
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
+
     const res = await axios.get("http://localhost:8000/users/me", config);
 
-    dispatch({
-      type: USER_LOADED,
-      payload: res.data,
-      user: res.data.user,
-    });
+    if (res.ok) {
+      dispatch({
+        type: AUTH_SUCCESS,
+        payload: res.data.user,
+      });
+    }
   } catch (error) {
     dispatch({
       type: AUTH_FAIL,
@@ -92,13 +98,15 @@ export const login = (userData) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: AUTH_FAIL,
-      payload: "REQUEST REJECTED",
+      payload: {
+        error: error.response.data.msg,
+      },
     });
   }
 };
 
 export const logout = () => async (dispatch) => {
   dispatch({
-    type: USER_IS_LOGGEDOUT,
+    type: AUTH_LOGOUT,
   });
 };

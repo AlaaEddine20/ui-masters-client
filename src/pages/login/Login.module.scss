@@ -13,23 +13,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #50525e;
-  border-radius: 2%;
+  border: 1px solid #3cbda7;
+  border-radius: 1%;
 
   h1 {
-    color: #eae9ef;
+    color: #e6e9ea;
   }
 
   small {
     cursor: pointer;
-    color: #f6f7f9;
+    color: #35bea7;
     position: relative;
     bottom: 40px;
-    left: 165px;
+    left: 205px;
+    width: 40px;
   }
 
   input {
-    width: 200px;
+    width: 240px;
     background: transparent;
     border: none;
     outline: 0;
@@ -48,11 +49,19 @@
 
   button {
     background: #35bea7;
-    border: none;
+    border: transparent;
+
+    &:hover {
+      background: #43d6be;
+    }
   }
 }
 
 .inputs {
   display: flex;
   flex-direction: column;
+}
+
+.form_bottom {
+  width: 240px;
 }

@@ -1,7 +1,7 @@
 import {
   AUTH_SUCCESS,
-  USER_LOADED,
-  USER_IS_LOGGEDOUT,
+  AUTH_LOADING,
+  AUTH_LOGOUT,
   AUTH_FAIL,
 } from "../constants/authConstants";
 
@@ -24,6 +24,14 @@ export const authReducer = (state = initialState, action) => {
         error: false,
       };
 
+    case AUTH_LOADING:
+      return {
+        ...state,
+        isLoggedIn: false,
+        isLoading: true,
+        error: false,
+      };
+
     case AUTH_FAIL:
       return {
         ...state,
@@ -32,21 +40,11 @@ export const authReducer = (state = initialState, action) => {
         isLoggedIn: false,
       };
 
-    case USER_LOADED:
+    case AUTH_LOGOUT:
       return {
         ...state,
         ...payload,
-        user: payload,
-        error: false,
-        isLoggedIn: true,
-        isLoading: false,
-      };
-
-    case USER_IS_LOGGEDOUT:
-      return {
-        ...state,
-        ...payload,
-        user: {},
+        user: null,
         isLoggedIn: false,
         isLoading: false,
         error: payload,
