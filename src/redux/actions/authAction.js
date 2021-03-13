@@ -5,6 +5,7 @@ import {
   USER_IS_LOGGEDOUT,
 } from "../constants/authConstants";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const userLoaded = () => async (dispatch) => {
   try {
@@ -18,6 +19,7 @@ export const userLoaded = () => async (dispatch) => {
     dispatch({
       type: USER_LOADED,
       payload: res.data,
+      user: res.data.user,
     });
   } catch (error) {
     dispatch({
@@ -73,10 +75,17 @@ export const login = (userData) => async (dispatch) => {
       config
     );
 
+    const accessToken = res.data.accessToken;
+    const refreshToken = res.data.refreshToken;
+
+    Cookies.set("access", accessToken);
+    Cookies.set("refresh", refreshToken);
+
     dispatch({
       type: AUTH_SUCCESS,
       payload: {
         token: res.data.accessToken,
+        refreshToken: res.data.refreshToken,
         user: res.data.user,
       },
     });

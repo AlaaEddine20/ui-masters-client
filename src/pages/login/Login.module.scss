@@ -1,16 +1,45 @@
 .login {
   display: flex;
-
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
 
 .form_wrapper {
-  width: 50%;
-  height: 50%;
-  transform: translate(50%, 50%);
+  width: 350px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid #50525e;
+  border-radius: 2%;
+
+  h1 {
+    color: #ecedf1;
+  }
+
+  small {
+    cursor: pointer;
+    color: #f6f7f9;
+  }
+
+  input {
+    width: 200px;
+    background: transparent;
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #35bea7;
+  }
+
+  button {
+    background: #35bea7;
+    border: none;
+  }
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
 }
