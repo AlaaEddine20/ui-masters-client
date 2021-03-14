@@ -17,7 +17,6 @@ const Login = () => {
   const [showPwt, setShowPwt] = useState(false);
 
   const dispatch = useDispatch();
-  // const user = useSelector((state) => state.authReducer.user);
   const isLoading = useSelector((state) => state.authReducer.isLoading);
 
   const handleSubmit = (e) => {

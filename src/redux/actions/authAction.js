@@ -11,6 +11,9 @@ export const userLoaded = () => async (dispatch) => {
   try {
     dispatch({
       type: AUTH_LOADING,
+      payload: {
+        isLoading: true,
+      },
     });
 
     const config = {
@@ -20,6 +23,12 @@ export const userLoaded = () => async (dispatch) => {
     };
 
     const res = await axios.get("http://localhost:8000/users/me", config);
+
+    const accessToken = res.data.accessToken;
+    const refreshToken = res.data.refreshToken;
+
+    Cookies.set("access", accessToken);
+    Cookies.set("refresh", refreshToken);
 
     if (res.ok) {
       dispatch({
@@ -67,6 +76,14 @@ export const register = (userData) => async (dispatch) => {
 
 export const login = (userData) => async (dispatch) => {
   try {
+    dispatch({
+      type: AUTH_LOADING,
+      payload: {
+        payload: {
+          isLoading: true,
+        },
+      },
+    });
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -91,7 +108,7 @@ export const login = (userData) => async (dispatch) => {
       type: AUTH_SUCCESS,
       payload: {
         token: res.data.accessToken,
-        refreshToken: res.data.refreshToken,
+        // refreshToken: res.data.refreshToken,
         user: res.data.user,
       },
     });

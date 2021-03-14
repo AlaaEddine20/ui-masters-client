@@ -1,12 +1,22 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import SideBar from "../../components/sidebar/SideBar";
+import { userLoaded } from "../../redux/actions/authAction";
+import styles from "./Home.module.scss";
 
 const Home = () => {
   const user = useSelector((state) => state.authReducer.user);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(userLoaded());
+  }, []);
+
   return (
-    <div>
-      <h1>Home page</h1>
-      <h1>{user.name}</h1>
+    <div className={styles.container}>
+      <SideBar />
+      <div className={styles.home_right}></div>
     </div>
   );
 };
