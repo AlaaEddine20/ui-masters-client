@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(userLoaded());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.container}>

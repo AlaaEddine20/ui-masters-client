@@ -11,9 +11,6 @@ export const userLoaded = () => async (dispatch) => {
   try {
     dispatch({
       type: AUTH_LOADING,
-      payload: {
-        isLoading: true,
-      },
     });
 
     const config = {
@@ -33,7 +30,11 @@ export const userLoaded = () => async (dispatch) => {
     if (res.ok) {
       dispatch({
         type: AUTH_SUCCESS,
-        payload: res.data.user,
+        payload: {
+          user: res.data.user,
+          token: accessToken,
+          refreshToken: refreshToken,
+        },
       });
     }
   } catch (error) {
@@ -108,7 +109,7 @@ export const login = (userData) => async (dispatch) => {
       type: AUTH_SUCCESS,
       payload: {
         token: res.data.accessToken,
-        // refreshToken: res.data.refreshToken,
+        refreshToken: res.data.refreshToken,
         user: res.data.user,
       },
     });

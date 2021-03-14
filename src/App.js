@@ -9,17 +9,16 @@ import "./App.css";
 function App() {
   const user = useSelector((state) => state.authReducer.user);
   console.log("USER HERE =>", user);
+
   return (
     <div className="App">
       <Route exact path="/">
         <Redirect to="/login" />
       </Route>
 
-      <Route path="/browse">{user ? <Home /> : <Redirect to="/login" />}</Route>
+      <Route path="/home">{user ? <Home /> : <Redirect to="/login" />}</Route>
 
-      <Route path="/login">
-        {user ? <Redirect to="/browse" /> : <Login />}
-      </Route>
+      <Route path="/login">{user ? <Redirect to="/home" /> : <Login />}</Route>
     </div>
   );
 }

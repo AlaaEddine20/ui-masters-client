@@ -4,24 +4,8 @@
   display: flex;
 }
 
-.sidebar_left {
-  width: 25%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-
-  h1 {
-    background: -webkit-linear-gradient(#784fff, #566df0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 2rem;
-    letter-spacing: 0.2rem;
-    font-weight: 400;
-  }
-}
-
 .home_right {
   background-color: rgb(36, 36, 36);
-  width: 75%;
+  width: 80%;
   height: 100%;
 }

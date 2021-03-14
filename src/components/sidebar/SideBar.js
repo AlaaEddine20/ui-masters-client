@@ -12,6 +12,7 @@ const SideBar = () => {
         <div className={styles.sidebar_links_wrapper}>
           {SideBarLinks.map((link) => (
             <div className={styles.sidebar_links}>
+              <span className="mr-3">{link.icon}</span>
               <h5>{link.name}</h5>
             </div>
           ))}
