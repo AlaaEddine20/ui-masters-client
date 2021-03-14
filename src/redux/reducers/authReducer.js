@@ -6,7 +6,7 @@ import {
 } from "../constants/authConstants";
 
 const initialState = {
-  user: {},
+  user: null,
   isLoggedIn: false,
   isLoading: false,
   error: false,
@@ -20,7 +20,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         ...payload,
         isLoggedIn: true,
-        isLoading: true,
+        isLoading: false,
         error: false,
       };
 

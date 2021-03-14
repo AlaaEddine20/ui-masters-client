@@ -17,7 +17,7 @@ const Login = () => {
   const [showPwt, setShowPwt] = useState(false);
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.authReducer.user);
+  // const user = useSelector((state) => state.authReducer.user);
   const isLoading = useSelector((state) => state.authReducer.isLoading);
 
   const handleSubmit = (e) => {
@@ -36,6 +36,9 @@ const Login = () => {
   ) : (
     <>
       <div className={styles.login}>
+        <div className={styles.login_left}>
+          <h1>Welcome back</h1>
+        </div>
         <form
           onChange={handleChange}
           onSubmit={handleSubmit}
@@ -75,8 +78,8 @@ const Login = () => {
             </p>
             <Link
               style={{
-                color: "#744bd7",
-                fontSize: "1rem",
+                color: "#35bea7",
+                fontSize: "0.8rem",
                 fontWeight: "400",
                 position: "relative",
                 left: 125,
@@ -85,7 +88,8 @@ const Login = () => {
               }}
               to="/register"
             >
-              Register Now!
+              <span className="mr-2">Register Now</span>
+              <i className="fas fa-angle-right"></i>
             </Link>
           </div>
         </form>

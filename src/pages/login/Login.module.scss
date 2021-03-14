@@ -1,38 +1,40 @@
 .login {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  height: 430px;
+  // box-shadow: 0px 0px 14px 0px #35bea7;
 }
 
 .form_wrapper {
-  background-color: #171717;
+  background-color: #21263b;
   width: 350px;
   height: 430px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
 
   h1 {
-    background: -webkit-linear-gradient(#6543d6, #2f49d1);
+    background: -webkit-linear-gradient(#784fff, #566df0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 2.2rem;
+    font-size: 2rem;
     letter-spacing: 0.2rem;
-    font-weight: 600;
-    // color: #2f49d1;
+    font-weight: 300;
   }
 
   small {
     cursor: pointer;
     color: #35bea7;
     position: relative;
+    font-size: 0.7rem;
     bottom: 40px;
-    left: 205px;
-    width: 40px;
+    left: 206px;
+    width: 30px;
   }
 
   input {
@@ -40,7 +42,7 @@
     background: transparent;
     border: none;
     outline: 0;
-    border-bottom: 1px solid #35bea781;
+    border-bottom: 1px solid #6543d6;
   }
 
   input[type="email"],
@@ -64,7 +66,7 @@
     padding: 0.1rem 0;
 
     &:hover {
-      background: #43d6be;
+      background: #3fdbc1;
     }
   }
 }
@@ -84,4 +86,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.login_left {
+  width: 300px;
+  height: 430px;
+  background-color: #16113a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    font-size: 3rem;
+    padding: 2rem;
+    color: #f5f9fc;
+    letter-spacing: 0.2rem;
+    font-weight: 400;
+  }
 }
