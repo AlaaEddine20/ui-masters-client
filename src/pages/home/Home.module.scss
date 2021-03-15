@@ -8,4 +8,11 @@
   background-color: rgb(36, 36, 36);
   width: 80%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_wrapper {
+  color: aliceblue;
 }

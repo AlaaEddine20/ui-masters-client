@@ -100,10 +100,10 @@ export const login = (userData) => async (dispatch) => {
     );
 
     const accessToken = res.data.accessToken;
-    const refreshToken = res.data.refreshToken;
+    // const refreshToken = res.data.refreshToken;
 
     Cookies.set("access", accessToken);
-    Cookies.set("refresh", refreshToken);
+    // Cookies.set("refresh", refreshToken);
 
     dispatch({
       type: AUTH_SUCCESS,
@@ -117,7 +117,7 @@ export const login = (userData) => async (dispatch) => {
     dispatch({
       type: AUTH_FAIL,
       payload: {
-        error: error.response.data.msg,
+        error: error.response.data.error,
       },
     });
   }
