@@ -109,7 +109,7 @@ export const login = (userData) => async (dispatch) => {
       type: AUTH_SUCCESS,
       payload: {
         token: res.data.accessToken,
-        refreshToken: res.data.refreshToken,
+        // refreshToken: res.data.refreshToken,
         user: res.data.user,
       },
     });

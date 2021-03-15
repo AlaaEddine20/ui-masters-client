@@ -20,6 +20,7 @@ export const addPost = (postData) => async (dispatch) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer Token",
       },
     };
 

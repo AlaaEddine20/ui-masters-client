@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import SideBar from "../../components/sidebar/SideBar";
 import { addPost } from "../../redux/actions/postActions";
 import styles from "./Home.module.scss";
 
 const Home = () => {
   const [postData, setPostData] = useState({
-    name: "",
+    username: "",
     title: "",
     description: "",
     code: "",
@@ -34,14 +34,10 @@ const Home = () => {
           className={styles.form_wrapper}
         >
           <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label>Name</Form.Label>
-            <Form.Control name="name" type="text" placeholder="name here..." />
+            <Form.Label>Username</Form.Label>
+            <Form.Control name="name" type="text" />
             <Form.Label>Title</Form.Label>
-            <Form.Control
-              name="title"
-              type="text"
-              placeholder="Title of the post..."
-            />
+            <Form.Control name="title" type="text" />
             <Form.Label>Description</Form.Label>
             <Form.Control name="description" as="textarea" rows={3} />
           </Form.Group>
@@ -50,7 +46,7 @@ const Home = () => {
             <Form.Label>Code</Form.Label>
             <Form.Control name="code" as="textarea" rows={3} />
           </Form.Group>
-          <Button className="my-3" type="submit" value="submit">
+          <Button variant="info" className="my-3" type="submit" value="submit">
             Submit
           </Button>
         </Form>
