@@ -6,6 +6,9 @@ import Login from "./pages/login/Login";
 import "./App.css";
 import Profile from "./pages/profile/Profile";
 import SideBar from "./components/sidebar/SideBar";
+import MyComponents from "./pages/mycomponents/MyComponents";
+import Feed from "./pages/feed/Feed";
+import Settings from "./pages/settings/Settings";
 
 function App() {
   const user = useSelector((state) => state.authReducer.user);
@@ -22,6 +25,15 @@ function App() {
             </Route>
             <Route path="/profile">
               <Profile />
+            </Route>
+            <Route path="/components/me">
+              <MyComponents />
+            </Route>
+            <Route path="/feed">
+              <Feed />
+            </Route>
+            <Route path="/settings">
+              <Settings />
             </Route>
           </div>
         </div>

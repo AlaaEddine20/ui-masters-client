@@ -4,7 +4,6 @@ import {
   POST_FAIL,
 } from "../constants/postConstants";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 export const addPost = (postData) => async (dispatch) => {
   try {
@@ -27,9 +26,8 @@ export const addPost = (postData) => async (dispatch) => {
     const body = JSON.stringify(postData);
 
     const res = await axios.post("http://localhost:8000/posts", body, config);
-    console.log(res);
+
     const accessToken = res.data.accessToken;
-    //Cookies.get("access", accessToken);
 
     dispatch({
       type: POST_SUCCESS,
