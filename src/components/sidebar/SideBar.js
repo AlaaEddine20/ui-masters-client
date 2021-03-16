@@ -1,5 +1,9 @@
 import React from "react";
+// Components
 import SideBarLinks from "./SideBarLinks";
+// router
+import { Link } from "react-router-dom";
+// Styles
 import styles from "./Sidebar.module.scss";
 
 const SideBar = () => {
@@ -11,10 +15,20 @@ const SideBar = () => {
         </div>
         <div className={styles.sidebar_links_wrapper}>
           {SideBarLinks.map((link) => (
-            <div key={link.id} className={styles.sidebar_links}>
-              <span className="mr-3">{link.icon}</span>
-              <h5>{link.name}</h5>
-            </div>
+            <Link
+              key={link.id}
+              to={link.path}
+              style={{ textDecoration: "none" }}
+            >
+              <div className={styles.sidebar_links}>
+                <div className={styles.sidebar_icons}>
+                  <span className="mx-3">{link.icon}</span>
+                </div>
+                <div className={styles.sidebar_text}>
+                  <h5 className="my-auto">{link.name}</h5>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

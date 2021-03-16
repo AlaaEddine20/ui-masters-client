@@ -20,16 +20,16 @@ export const addPost = (postData) => async (dispatch) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer Token",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     };
 
     const body = JSON.stringify(postData);
 
     const res = await axios.post("http://localhost:8000/posts", body, config);
-
+    console.log(res);
     const accessToken = res.data.accessToken;
-    Cookies.get("access", accessToken);
+    //Cookies.get("access", accessToken);
 
     dispatch({
       type: POST_SUCCESS,

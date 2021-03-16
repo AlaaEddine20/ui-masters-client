@@ -5,7 +5,6 @@ import {
   AUTH_LOGOUT,
 } from "../constants/authConstants";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 export const userLoaded = () => async (dispatch) => {
   try {
@@ -22,10 +21,6 @@ export const userLoaded = () => async (dispatch) => {
     const res = await axios.get("http://localhost:8000/users/me", config);
 
     const accessToken = res.data.accessToken;
-    const refreshToken = res.data.refreshToken;
-
-    Cookies.set("access", accessToken);
-    Cookies.set("refresh", refreshToken);
 
     if (res.ok) {
       dispatch({
@@ -33,7 +28,6 @@ export const userLoaded = () => async (dispatch) => {
         payload: {
           user: res.data.user,
           token: accessToken,
-          refreshToken: refreshToken,
         },
       });
     }
@@ -100,16 +94,13 @@ export const login = (userData) => async (dispatch) => {
     );
 
     const accessToken = res.data.accessToken;
-    // const refreshToken = res.data.refreshToken;
-
-    Cookies.set("access", accessToken);
-    // Cookies.set("refresh", refreshToken);
+    console.log({ accessToken, data: res.data });
+    localStorage.setItem("token", accessToken);
 
     dispatch({
       type: AUTH_SUCCESS,
       payload: {
         token: res.data.accessToken,
-        // refreshToken: res.data.refreshToken,
         user: res.data.user,
       },
     });
