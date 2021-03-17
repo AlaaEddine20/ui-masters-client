@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import PostForm from "../../components/form/PostForm";
+import CodeEditor from "../../components/form/CodeEditor";
+// import PostForm from "../../components/form/PostForm";
 import styles from "./MyComp.module.scss";
 
 const MyComponents = () => {
@@ -14,7 +15,7 @@ const MyComponents = () => {
       <button className={styles.modal_btn} onClick={toggleModal}>
         Add New Component
       </button>
-      <div className={styles.form}>{isAddPost ? <PostForm /> : null}</div>
+      <div className={styles.form}>{isAddPost ? <CodeEditor /> : null}</div>
     </div>
   );
 };
