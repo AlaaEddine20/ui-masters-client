@@ -32,11 +32,10 @@ const AddNew = () => {
         textAreaClassName={styles.custom}
         getJsCode={getJsCode}
         getCssCode={getCssCode}
-        initialCode={"function test () { return <h1>Hello</h1>}"}
+        initialjs={"function test () { return <h1>Hello</h1>}"}
         initialCss={""}
       />
       <button onClick={handleSubmit}>Submit</button>
-      {/* <Form js={jsCode} css={cssCode} /> */}
     </div>
   );
 };

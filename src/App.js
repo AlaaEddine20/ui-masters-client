@@ -13,6 +13,7 @@ import AddNew from "./pages/add_new/AddNew";
 
 function App() {
   const user = useSelector((state) => state.authReducer.user);
+  const post = useSelector((state) => state.postReducer.post);
 
   return (
     <div className="App">
@@ -30,9 +31,11 @@ function App() {
             <Route path="/profile">
               <Profile />
             </Route>
-            <Route path="/components/me">
-              <MyComponents />
-            </Route>
+            {post && (
+              <Route path="/components/me">
+                <MyComponents />
+              </Route>
+            )}
             <Route path="/feed">
               <Feed />
             </Route>

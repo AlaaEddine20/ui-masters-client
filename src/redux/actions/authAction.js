@@ -94,7 +94,6 @@ export const login = (userData) => async (dispatch) => {
     );
 
     const accessToken = res.data.accessToken;
-    console.log({ accessToken, data: res.data });
     localStorage.setItem("token", accessToken);
 
     dispatch({
