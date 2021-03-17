@@ -26,6 +26,7 @@ const PostForm = () => {
   const handleChange = (e) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
   };
+
   return (
     <>
       <Form

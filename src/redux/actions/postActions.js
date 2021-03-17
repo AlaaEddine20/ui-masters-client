@@ -6,6 +6,7 @@ import {
 import axios from "axios";
 
 export const addPost = (postData) => async (dispatch) => {
+  console.log(postData);
   try {
     dispatch({
       type: POST_LOADING,
