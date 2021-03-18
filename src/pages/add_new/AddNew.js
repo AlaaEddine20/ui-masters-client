@@ -27,6 +27,7 @@ const AddNew = () => {
 
   return (
     <div className={styles.wrapper}>
+      <h1 style={{ color: "#fff" }}>Upload your next component</h1>
       <Editor
         className={styles.container}
         textAreaClassName={styles.custom}

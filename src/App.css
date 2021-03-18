@@ -6,23 +6,45 @@
 }
 
 .App {
-  background-color: #100f10;
+  background-color: rgb(36, 36, 36);
   width: 100vw;
   height: 100vh;
 }
 
 .main_container {
   width: 100%;
-  height: 100%;
   display: flex;
 }
 
 .home_right {
   background-color: rgb(36, 36, 36);
+  background-attachment: fixed;
+
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin-left: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+div[data-id="preview-container"] {
+  width: 100%;
+  height: 45%;
+  display: flex;
+  justify-content: center;
+}
+
+div[data-id="js-container"] {
+  display: flex;
+  align-items: center;
+}
+
+div[data-id="css-container"] {
+  display: flex;
+  align-items: center;
+}
+
+span[class*="operator"] {
+  background: none !important;
 }
