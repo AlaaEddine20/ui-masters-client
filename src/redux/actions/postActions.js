@@ -27,13 +27,10 @@ export const addPost = (postData) => async (dispatch) => {
 
     const res = await axios.post("http://localhost:8000/posts", body, config);
 
-    const accessToken = res.data.accessToken;
-
     dispatch({
       type: POST_SUCCESS,
       payload: {
         post: res.data.newPost,
-        token: accessToken,
       },
     });
   } catch (error) {
@@ -69,18 +66,16 @@ export const getUserPosts = (id) => async (dispatch) => {
       "http://localhost:8000/posts/user_posts/" + id,
       config
     );
-
-    const accessToken = res.data.accessToken;
+    console.log("THUNK GET", res);
 
     dispatch({
       type: POST_SUCCESS,
       payload: {
-        post: res.data.post,
-        token: accessToken,
+        posts: res.data,
       },
     });
   } catch (error) {
-    console.log(error);
+    console.log("GET ERROR =>", error);
     dispatch({
       type: POST_FAIL,
       payload: {

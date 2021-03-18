@@ -1,6 +1,6 @@
 .wrapper {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 
 .custom {
@@ -9,17 +9,21 @@
   height: 400px;
   margin: 10px;
   border-radius: 14px;
-  background: rgb(107, 60, 184);
+  background: rgb(80, 45, 136);
   box-shadow: -2px -2px 2px #458eca;
   position: relative;
   overflow: auto !important;
-  font-family: "Fira code", "Fira Mono", monospace;
+  font-family: sans-serif;
   cursor: text;
   color: #fff;
 }
 
 .custom textarea:focus {
   outline: none;
+}
+
+.custom textarea {
+  font-family: sans-serif;
 }
 
 div[data-id="preview-container"] {
@@ -43,7 +47,7 @@ div[data-id="css-container"] {
 }
 
 .container {
-  width: 100%;
+  // width: 100%;
   height: 100%;
   display: flex;
   align-items: center;

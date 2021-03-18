@@ -1,12 +1,16 @@
 import React from "react";
 // Components
-import SideBarLinks from "./SideBarLinks";
+import generateLinks from "./SideBarLinks";
 // router
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 // Styles
 import styles from "./Sidebar.module.scss";
 
 const SideBar = () => {
+  const id = useSelector((state) => state.authReducer.user._id);
+  const links = generateLinks(id);
+
   return (
     <>
       <div className={styles.sidebar_left}>
@@ -14,7 +18,7 @@ const SideBar = () => {
           <h1>UI MASTERS</h1>
         </div>
         <div className={styles.sidebar_links_wrapper}>
-          {SideBarLinks.map((link) => (
+          {links.map((link) => (
             <Link
               key={link.id}
               to={link.path}

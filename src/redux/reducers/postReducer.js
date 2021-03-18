@@ -5,7 +5,7 @@ import {
 } from "../constants/postConstants";
 
 const initialState = {
-  post: null,
+  posts: null,
   isLoading: false,
   error: false,
 };
@@ -32,7 +32,7 @@ export const postReducer = (state = initialState, action) => {
       return {
         ...state,
         ...payload,
-        post: null,
+        posts: null,
         isLoading: false,
         error: payload,
       };
