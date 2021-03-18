@@ -6,7 +6,7 @@ import styles from "./MyComp.module.scss";
 
 const MyComponents = () => {
   const post = useSelector((state) => state.postReducer.post);
-
+  console.log(post);
   const dispatch = useDispatch();
 
   useEffect(() => {

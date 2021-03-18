@@ -47,7 +47,7 @@ export const addPost = (postData) => async (dispatch) => {
   }
 };
 
-export const getUserPosts = () => async (dispatch) => {
+export const getUserPosts = (id) => async (dispatch) => {
   try {
     dispatch({
       type: POST_LOADING,
@@ -66,7 +66,7 @@ export const getUserPosts = () => async (dispatch) => {
     };
 
     const res = await axios.get(
-      "http://localhost:8000/posts/userPosts",
+      "http://localhost:8000/posts/user_posts/" + id,
       config
     );
 
@@ -75,7 +75,7 @@ export const getUserPosts = () => async (dispatch) => {
     dispatch({
       type: POST_SUCCESS,
       payload: {
-        post: res.data.newPost,
+        post: res.data.post,
         token: accessToken,
       },
     });
