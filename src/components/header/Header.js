@@ -7,10 +7,15 @@ const Header = () => {
 
   return (
     <div className={styles.header_wrapper}>
-      <h4 style={{ color: "#8739f9" }}>
-        {user.name}
-        <span> {user.lastname}</span>
-      </h4>
+      <div className={styles.name_wrapper}>
+        <h4 className="my-auto">
+          {user.name}
+          <span> {user.lastname}</span>
+        </h4>
+      </div>
+      <div className={styles.pic_wrapper}>
+        <img src={user.profilePic} alt="profile-pic" />
+      </div>
     </div>
   );
 };

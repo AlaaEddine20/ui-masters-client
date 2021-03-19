@@ -1,9 +1,26 @@
 .header_wrapper {
-  width: 200px;
-  height: 60px;
+  width: 250px;
   position: absolute;
+  position: fixed;
+  z-index: 3;
   right: 0;
-  top: 50px;
+  top: 45px;
+  // padding: 1rem;
   display: flex;
   align-items: center;
+  justify-content: space-around;
+
+  .name_wrapper {
+    h4 {
+      color: #8739f9;
+    }
+  }
+
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 5px 1px #8739f9;
+  }
 }
