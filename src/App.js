@@ -44,7 +44,7 @@ function App() {
           </div>
         </div>
       ) : (
-        <Login />
+        <Redirect to="/login" />
       )}
       <Route exact path="/">
         <Redirect to="/login" />

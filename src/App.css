@@ -44,8 +44,7 @@ div[data-id="js-container"] {
   overflow: auto;
   margin: 10px;
   border-radius: 5px;
-  box-shadow: inset 2px 2px 2px rgb(107, 60, 184),
-    inset -2px -2px 2px rgb(107, 60, 184);
+  box-shadow: inset 2px 2px 2px #9147ff, inset -2px -2px 2px #9147ff;
   position: relative;
   font-family: "Fira code", "Fira Mono", monospace;
   cursor: text;
@@ -61,8 +60,7 @@ div[data-id="css-container"] {
   overflow: auto;
   margin: 10px;
   border-radius: 5px;
-  box-shadow: inset 2px 2px 2px rgb(107, 60, 184),
-    inset -2px -2px 2px rgb(107, 60, 184);
+  box-shadow: inset 2px 2px 2px #9147ff, inset -2px -2px 2px #9147ff;
   position: relative;
   font-family: "Fira code", "Fira Mono", monospace;
   cursor: text;
