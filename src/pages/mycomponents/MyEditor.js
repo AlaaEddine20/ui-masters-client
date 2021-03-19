@@ -6,7 +6,7 @@ function MyEditor({ post }) {
   // const [showCode, setShowCode] = useState(true);
 
   return (
-    <>
+    <div className={styles.editor_wrapper}>
       {/* <h6
         onClick={() => setShowCode((prev) => !prev)}
         style={{ color: "#fff", cursor: "pointer", paddingTop: "5rem" }}
@@ -20,7 +20,7 @@ function MyEditor({ post }) {
         initialCss={post.css}
       />
       {/* )} */}
-    </>
+    </div>
   );
 }
 

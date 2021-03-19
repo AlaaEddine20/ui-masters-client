@@ -4,6 +4,7 @@ import styles from "./Profile.module.scss";
 
 const Profile = () => {
   const user = useSelector((state) => state.authReducer.user);
+
   return (
     <div className={styles.profile_container}>
       <div className={styles.wrapper_profile}>
