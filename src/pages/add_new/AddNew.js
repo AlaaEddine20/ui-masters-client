@@ -28,15 +28,18 @@ const AddNew = () => {
   return (
     <div className={styles.wrapper}>
       <h1 style={{ color: "#fff" }}>Upload your next component</h1>
-      <Editor
-        className={styles.container}
-        textAreaClassName={styles.custom}
-        getJsCode={getJsCode}
-        getCssCode={getCssCode}
-        initialjs={"function test () { return <h1>Hello</h1>}"}
-        initialCss={""}
-      />
-      <button onClick={handleSubmit}>Submit</button>
+      <div className={styles.wrapper}>
+        <Editor
+          className={styles.container}
+          getJsCode={getJsCode}
+          getCssCode={getCssCode}
+          initialjs={"function test () { return <h1>Hello</h1>}"}
+          initialCss={""}
+        />
+      </div>
+      <div className={styles.btn_wrapper}>
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
     </div>
   );
 };

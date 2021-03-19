@@ -22,9 +22,11 @@ const Header = () => {
           </p>
         </div>
       </div>
-      <div className={styles.pic_wrapper}>
-        <img src={user.profilePic} alt="profile-pic" />
-      </div>
+      {user.profilePic && (
+        <div className={styles.pic_wrapper}>
+          <img src={user.profilePic} alt="profile-pic" />
+        </div>
+      )}
     </div>
   );
 };
