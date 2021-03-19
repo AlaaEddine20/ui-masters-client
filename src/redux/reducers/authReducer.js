@@ -6,6 +6,7 @@ import {
 } from "../constants/authConstants";
 
 const initialState = {
+  isAuth: localStorage.getItem("token") ? true : false,
   user: null,
   isLoggedIn: false,
   isLoading: false,

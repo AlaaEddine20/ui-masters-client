@@ -19,10 +19,10 @@
 .home_right {
   background-color: rgb(36, 36, 36);
   background-attachment: fixed;
-
   width: 100%;
   height: 100%;
   margin-left: 300px;
+  margin-top: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,21 +30,56 @@
 
 div[data-id="preview-container"] {
   width: 100%;
-  height: 45%;
+  padding: 150px 0;
   display: flex;
   justify-content: center;
 }
 
 div[data-id="js-container"] {
-  display: flex;
-  align-items: center;
+  background: rgb(30, 20, 30);
+  height: 21.875rem;
+  max-height: 21.875rem;
+  overflow: auto;
+  min-width: 300px;
+  overflow: auto;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: inset 2px 2px 2px rgb(107, 60, 184),
+    inset -2px -2px 2px rgb(107, 60, 184);
+  position: relative;
+  font-family: "Fira code", "Fira Mono", monospace;
+  cursor: text;
 }
 
 div[data-id="css-container"] {
-  display: flex;
-  align-items: center;
+  background: rgb(30, 20, 30);
+  height: 21.875rem;
+  max-height: 21.875rem;
+  overflow: auto;
+  min-width: 300px;
+  overflow: auto;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: inset 2px 2px 2px rgb(107, 60, 184),
+    inset -2px -2px 2px rgb(107, 60, 184);
+  position: relative;
+  font-family: "Fira code", "Fira Mono", monospace;
+  cursor: text;
+}
+
+div[data-id="error-container"] {
+  background: tomato;
+  color: #505050;
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 20px;
 }
 
 span[class*="operator"] {
   background: none !important;
+}
+
+pre {
+  color: rgb(4, 213, 250) !important;
 }

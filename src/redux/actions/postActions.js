@@ -66,7 +66,6 @@ export const getUserPosts = (id) => async (dispatch) => {
       "http://localhost:8000/posts/user_posts/" + id,
       config
     );
-    console.log("THUNK GET", res);
 
     dispatch({
       type: POST_SUCCESS,

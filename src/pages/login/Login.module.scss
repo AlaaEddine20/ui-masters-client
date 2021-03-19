@@ -31,10 +31,10 @@
     cursor: pointer;
     color: #35bea7;
     position: relative;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     bottom: 40px;
     left: 206px;
-    width: 30px;
+    width: 35px;
   }
 
   input {
@@ -43,6 +43,7 @@
     border: none;
     outline: 0;
     border-bottom: 1px solid #6543d6;
+    margin: 20px 0;
   }
 
   input[type="email"],

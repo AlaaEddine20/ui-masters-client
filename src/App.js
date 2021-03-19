@@ -13,7 +13,6 @@ import AddNew from "./pages/add_new/AddNew";
 
 function App() {
   const user = useSelector((state) => state.authReducer.user);
-  // const post = useSelector((state) => state.postReducer.post);
 
   return (
     <div className="App">
@@ -48,7 +47,7 @@ function App() {
       <Route exact path="/">
         <Redirect to="/login" />
       </Route>
-      <Route path="/login">{user ? <Redirect to="/home" /> : <Login />}</Route>
+      <Route path="/login">{user ? <Redirect to="/feed" /> : <Login />}</Route>
     </div>
   );
 }
