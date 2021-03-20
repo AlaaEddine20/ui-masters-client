@@ -7,16 +7,16 @@ function generateLinks(id) {
       icon: <i className="fas fa-plus"></i>,
     },
     {
+      id: 3,
+      name: "Discover",
+      path: "/feed",
+      icon: <i className="fas fa-laptop-code"></i>,
+    },
+    {
       id: 2,
       name: "My Profile",
       path: "/profile",
       icon: <i className="fas fa-user-ninja"></i>,
-    },
-    {
-      id: 3,
-      name: "Feed",
-      path: "/feed",
-      icon: <i className="fas fa-laptop-code"></i>,
     },
     {
       id: 4,
@@ -24,12 +24,12 @@ function generateLinks(id) {
       path: "/components/" + id,
       icon: <i className="fab fa-react"></i>,
     },
-    {
-      id: 5,
-      name: "Settings",
-      path: "/settings",
-      icon: <i className="fas fa-cogs"></i>,
-    },
+    // {
+    //   id: 5,
+    //   name: "Settings",
+    //   path: "/settings",
+    //   icon: <i className="fas fa-cogs"></i>,
+    // },
   ];
 }
 

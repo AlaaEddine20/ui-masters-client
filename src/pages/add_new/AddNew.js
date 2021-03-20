@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+// editor
 import Editor from "react-code-live";
+// redux
 import { useDispatch } from "react-redux";
 import { addPost } from "../../redux/actions/postActions";
+// styles
 import styles from "./AddNew.module.scss";
 
 const AddNew = () => {

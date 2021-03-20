@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+// redux
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router";
 import { logout } from "../../redux/actions/authAction";
+// styles
 import styles from "./Header.module.scss";
 
 const Header = () => {

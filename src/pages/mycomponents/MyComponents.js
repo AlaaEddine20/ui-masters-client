@@ -1,8 +1,12 @@
 import React, { useEffect } from "react";
+// router
 import { useParams } from "react-router-dom";
+// redux
 import { useDispatch, useSelector } from "react-redux";
 import { getUserPosts } from "../../redux/actions/postActions";
+// components
 import MyEditor from "./MyEditor";
+// styles
 import styles from "./MyComp.module.scss";
 
 const MyComponents = () => {

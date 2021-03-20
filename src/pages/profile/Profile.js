@@ -1,11 +1,13 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { uploadProfilePic } from "../../redux/actions/authAction";
+import React, { useState } from "react";
+// redux
+import { useSelector } from "react-redux";
+// styles
 import styles from "./Profile.module.scss";
 
 const Profile = () => {
   const user = useSelector((state) => state.authReducer.user);
-  const dispatch = useDispatch();
+
+  const [profilePic, setProfilePic] = useState(null);
 
   return (
     <div className={styles.profile_container}>
