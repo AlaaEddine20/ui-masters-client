@@ -46,9 +46,9 @@ function App() {
       ) : (
         <Redirect to="/login" />
       )}
-      <Route exact path="/">
+      {/* <Route exact path="/">
         <Redirect to="/login" />
-      </Route>
+      </Route> */}
       <Route path="/login">{user ? <Redirect to="/feed" /> : <Login />}</Route>
     </div>
   );
