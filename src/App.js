@@ -1,16 +1,19 @@
 import React from "react";
-import Home from "./pages/home/Home";
+// redux
 import { useSelector } from "react-redux";
+// router
 import { Route, Redirect } from "react-router-dom";
+// components
+import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import "./App.css";
 import Profile from "./pages/profile/Profile";
 import SideBar from "./components/sidebar/SideBar";
 import MyComponents from "./pages/mycomponents/MyComponents";
-import Feed from "./pages/feed/Feed";
-import Settings from "./pages/settings/Settings";
 import AddNew from "./pages/add_new/AddNew";
 import Header from "./components/header/Header";
+import DiscoverSection from "./pages/feed/DiscoverSection";
+// css
+import "./App.css";
 
 function App() {
   const user = useSelector((state) => state.authReducer.user);
@@ -35,21 +38,20 @@ function App() {
             <Route path="/components/:id">
               <MyComponents />
             </Route>
-            <Route path="/feed">
-              <Feed />
-            </Route>
-            <Route path="/settings">
-              <Settings />
+            <Route path="/discover">
+              <DiscoverSection />
             </Route>
           </div>
         </div>
       ) : (
         <Redirect to="/login" />
       )}
-      {/* <Route exact path="/">
+      <Route exact path="/">
         <Redirect to="/login" />
-      </Route> */}
-      <Route path="/login">{user ? <Redirect to="/feed" /> : <Login />}</Route>
+      </Route>
+      <Route path="/login">
+        {user ? <Redirect to="/profile" /> : <Login />}
+      </Route>
     </div>
   );
 }

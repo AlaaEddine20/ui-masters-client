@@ -1,6 +1,6 @@
 import React from "react";
 
-const Feed = () => {
+const DiscoverSection = () => {
   return (
     <div>
       <h1 style={{ color: "#fff" }}>Render all users posts</h1>
@@ -8,4 +8,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default DiscoverSection;
