@@ -9,7 +9,7 @@ function generateLinks(id) {
     {
       id: 3,
       name: "Discover",
-      path: "/feed",
+      path: "/discover",
       icon: <i className="fas fa-laptop-code"></i>,
     },
     {
