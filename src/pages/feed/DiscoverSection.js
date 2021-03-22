@@ -14,17 +14,23 @@ const DiscoverSection = () => {
   }, []);
 
   return (
-    <div>
-      <h1 style={{ color: "#fff" }}>Render all users posts</h1>
+    <>
       <div className={styles.wrapper}>
+        <h3 style={{ color: "#fff" }}>Discover other Devs components</h3>
         {posts?.map((post, id) => (
-          <>
-            <h4 style={{ color: "#fff" }}>{post.user.name}</h4>
+          <div className={styles.post_container}>
+            <div className={styles.post_info}>
+              <h5>{post.title}</h5>
+              Posted by <span>{post.user.name}</span>
+              <span>
+                <img src={post.user.profilePic} alt="profile-pic" />
+              </span>
+            </div>
             <MyEditor key={id} post={post} />
-          </>
+          </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

@@ -21,7 +21,7 @@ const MyComponents = () => {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <div>
       {posts?.map((post, id) => (
         <MyEditor key={id} post={post} />
       ))}
