@@ -9,6 +9,7 @@ import styles from "./AddNew.module.scss";
 
 const AddNew = () => {
   const [postData, setPostData] = useState({
+    title: "",
     js: "",
     css: "",
   });
@@ -21,6 +22,10 @@ const AddNew = () => {
     setPostData({ ...postData, css });
   };
 
+  const getTitle = (e) => {
+    setPostData({ ...postData, [e.target.name]: e.target.value });
+  };
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -30,19 +35,27 @@ const AddNew = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 style={{ color: "#fff" }}>Upload your next component</h1>
-      <div className={styles.wrapper}>
-        <Editor
-          className={styles.container}
-          getJsCode={getJsCode}
-          getCssCode={getCssCode}
-          initialjs={"function test () { return <h1>Hello</h1>}"}
-          initialCss={""}
-        />
-      </div>
+      <h3 style={{ color: "#fff", marginBottom: "50px" }}>
+        Upload your next component
+      </h3>
       <div className={styles.btn_wrapper}>
         <button onClick={handleSubmit}>Submit</button>
       </div>
+      <form
+        onSubmit={handleSubmit}
+        autoComplete="off"
+        className={styles.form_wrapper}
+      >
+        <label htmlFor="title">Title</label>
+        <input onChange={getTitle} type="text" name="title" />
+      </form>
+      <Editor
+        className={styles.container}
+        getJsCode={getJsCode}
+        getCssCode={getCssCode}
+        initialjs={"function test () { return <h1>Hello</h1>}"}
+        initialCss={""}
+      />
     </div>
   );
 };

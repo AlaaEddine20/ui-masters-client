@@ -1,16 +1,22 @@
 .wrapper {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 
   .btn_wrapper {
-    padding: 3rem 0;
+    padding: 1rem 0;
 
     button {
       width: 200px;
       padding: 0.5rem 3rem;
+      background-color: transparent;
+      border: 2px solid #9147ff;
+      color: #fff;
+
+      &:hover {
+        background-color: #9147ff;
+      }
     }
   }
 }
@@ -26,4 +32,23 @@
 
 .custom textarea {
   outline: none;
+}
+
+.form_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  label {
+    color: #fff;
+  }
+
+  input {
+    outline: 0;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid #9147ff62;
+    color: #fff;
+  }
 }
