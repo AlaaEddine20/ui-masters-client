@@ -9,6 +9,9 @@ const DiscoverSection = () => {
 
   const posts = useSelector((state) => state.postsReducer.posts);
 
+  const isLoading = useSelector((state) => state.postReducer.isLoading);
+  console.log("DISCOVER PAGE => ", isLoading);
+
   useEffect(() => {
     dispatch(getAllPosts());
   }, []);

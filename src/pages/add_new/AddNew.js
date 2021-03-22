@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Button, Spinner } from "react-bootstrap";
 // editor
 import Editor from "react-code-live";
 // redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../../redux/actions/postActions";
+import { POST_LOADING } from "../../redux/constants/postConstants";
 // styles
 import styles from "./AddNew.module.scss";
 
@@ -26,6 +28,9 @@ const AddNew = () => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
   };
 
+  const isLoading = useSelector((state) => state.postReducer.isLoading);
+  console.log("ADD NEW POST PAGE =>", isLoading);
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -33,11 +38,16 @@ const AddNew = () => {
     dispatch(addPost(postData));
   };
 
-  return (
+  return isLoading ? (
+    <div className={styles.spinner}>
+      <Spinner animation="grow" variant="info" />
+    </div>
+  ) : (
     <div className={styles.wrapper}>
       <h3 style={{ color: "#fff", marginBottom: "50px" }}>
         Upload your next component
       </h3>
+
       <div className={styles.btn_wrapper}>
         <button onClick={handleSubmit}>Submit</button>
       </div>

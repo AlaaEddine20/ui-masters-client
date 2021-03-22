@@ -1,6 +1,6 @@
 import React from "react";
 import Editor from "react-code-live";
-import styles from "./../mycomponents/MyComp.module.scss";
+import styles from "./../mycomponents/Editor.module.scss";
 
 function MyEditor({ post }) {
   return (

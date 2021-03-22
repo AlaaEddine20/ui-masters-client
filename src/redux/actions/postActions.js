@@ -9,11 +9,6 @@ export const addPost = (postData) => async (dispatch) => {
   try {
     dispatch({
       type: POST_LOADING,
-      payload: {
-        payload: {
-          isLoading: true,
-        },
-      },
     });
 
     const config = {
@@ -34,7 +29,6 @@ export const addPost = (postData) => async (dispatch) => {
       },
     });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: POST_FAIL,
       payload: {
