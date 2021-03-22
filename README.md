@@ -5,7 +5,7 @@ This is an ambitious project of mine, i really liked the idea of creating a soci
 It provides the user with two text editors made with react-code-live library based on react-live library. The two editors are for javascript and CSS codes, if there are errors in the code an error will show up, if the code is correct the component will be rendered correctly in its container.
 
 The main pages are:
-  - Add new component => self exlanatory;
+  - Add new component => self explanatory;
   - My profile => The section where the user can edit his infos;
   - Discover => Section where all users components are rendered (like a home page);
   - My components => Where the user can see his uploaded components (soon the edit/delete component feature will be imnplemented).
