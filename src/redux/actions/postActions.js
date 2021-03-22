@@ -74,7 +74,6 @@ export const getUserPosts = (id) => async (dispatch) => {
       },
     });
   } catch (error) {
-    console.log("GET ERROR =>", error);
     dispatch({
       type: POST_FAIL,
       payload: {
