@@ -4,8 +4,10 @@
 
 .post_container {
   .post_info {
-    margin-top: 50px;
     color: #f2f5f5;
+    position: relative;
+    top: 80px;
+    left: 10px;
     span {
       color: #37b9f1;
       font-weight: 600;
@@ -13,9 +15,11 @@
     }
 
     img {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 5px 1px #37b9f1;
     }
 
     h5 {
