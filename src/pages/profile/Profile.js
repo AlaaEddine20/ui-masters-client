@@ -56,7 +56,7 @@ const Profile = () => {
           {isLoading ? <LoadingBar /> : null}
           <div className={styles.form}>
             <form
-              className="my-2"
+              className="mt-3"
               onSubmit={handleSubmit}
               encType="multipart/form-data"
             >

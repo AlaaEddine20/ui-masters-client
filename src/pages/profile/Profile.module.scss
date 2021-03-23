@@ -34,7 +34,7 @@
       height: 25px;
       width: 80px;
       text-align: center;
-      margin: 0 10px;
+      margin: 0 12px;
       cursor: pointer;
     }
 
@@ -43,7 +43,7 @@
       height: 25px;
       width: 80px;
       border: none;
-      margin: 0 10px;
+      margin: 0 12px;
     }
   }
 
@@ -55,4 +55,9 @@
     bottom: 12%;
     cursor: pointer;
   }
+}
+
+.username {
+  display: flex;
+  padding: 0 2rem;
 }
