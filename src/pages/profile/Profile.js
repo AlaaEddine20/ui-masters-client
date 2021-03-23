@@ -11,12 +11,15 @@ const Profile = () => {
   const user = useSelector((state) => state.authReducer.user);
 
   const [profilePic, setProfilePic] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const id = user._id;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
+      console.log("LOADING");
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -25,14 +28,17 @@ const Profile = () => {
       };
 
       const formData = new FormData();
-      formData.append("image", profilePic);
+      await formData.append("image", profilePic);
 
-      await axios.post(
+      const response = await axios.post(
         process.env.REACT_APP_URL + "/users/" + id + "/upload",
         formData,
         config
       );
-      setProfilePic(formData);
+      console.log(response);
+
+      setProfilePic(response.data.profilePic);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +64,7 @@ const Profile = () => {
               name="file"
               onChange={handleFileChange}
             />
-            <input type="submit" />
+            <input type="submit" value="Save" />
           </form>
         </div>
         <div className={styles.username}>

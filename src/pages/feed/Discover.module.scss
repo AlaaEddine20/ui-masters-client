@@ -1,13 +1,14 @@
 .wrapper {
-  width: 80%;
+  width: 90%;
 }
 
 .post_container {
   .post_info {
+    width: 300px;
     color: #f2f5f5;
     position: relative;
-    top: 80px;
-    left: 10px;
+    top: 90px;
+    left: 35px;
     span {
       color: #37b9f1;
       font-weight: 600;
@@ -29,10 +30,11 @@
       color: #9147ff;
     }
   }
-}
+  // div[data-id="js-container"] {
+  //   display: none;
+  // }
 
-.wrapper {
-  h3 {
-    text-align: center;
-  }
+  // div[data-id="css-container"] {
+  //   display: none;
+  // }
 }
