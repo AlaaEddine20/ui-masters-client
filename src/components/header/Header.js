@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/actions/authAction";

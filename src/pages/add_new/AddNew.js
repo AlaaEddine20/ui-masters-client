@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Button, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 // editor
 import Editor from "react-code-live";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../../redux/actions/postActions";
-import { POST_LOADING } from "../../redux/constants/postConstants";
 // styles
 import styles from "./AddNew.module.scss";
 

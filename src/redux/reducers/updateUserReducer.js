@@ -5,12 +5,12 @@ import {
 } from "./../constants/userConstants";
 
 const initialState = {
-  profilePic: null,
+  profilePic: {},
   isLoading: false,
   error: false,
 };
 
-export const postReducer = (state = initialState, action) => {
+export const updateUserReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case UPDATE_USER_SUCCESS:
@@ -32,7 +32,7 @@ export const postReducer = (state = initialState, action) => {
       return {
         ...state,
         ...payload,
-        profilePic: null,
+        profilePic: {},
         isLoading: false,
         error: payload,
       };

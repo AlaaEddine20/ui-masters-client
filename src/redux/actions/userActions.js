@@ -17,6 +17,7 @@ export const uploadProfilePic = (id) => async (dispatch) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     };
 
@@ -24,16 +25,18 @@ export const uploadProfilePic = (id) => async (dispatch) => {
       `http://localhost:8000/users/${id}/upload`,
       config
     );
-
+    console.log("INSIDE USERACTION ==> ", res.data);
     dispatch({
       type: UPDATE_USER_SUCCESS,
-      payload: res.data,
+      payload: {
+        profilePic: res.data,
+      },
     });
   } catch (error) {
     dispatch({
       type: UPDATE_USER_FAIL,
       payload: {
-        error: error.response.data.error,
+        error: error.response,
       },
     });
   }

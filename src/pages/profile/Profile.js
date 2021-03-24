@@ -2,29 +2,27 @@ import React, { useState } from "react";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { uploadProfilePic } from "./../../redux/actions/userActions";
-// axios
-import axios from "axios";
 // styles
 import LoadingBar from "./LoadingBar";
 import styles from "./Profile.module.scss";
 
 const Profile = () => {
   const user = useSelector((state) => state.authReducer.user);
-  const isLoading = useSelector((state) => state.uploadUserReducer.isLoading);
+  const isLoading = useSelector((state) => state.updateUserReducer.isLoading);
   const dispatch = useDispatch();
 
-  const [profilePic, setProfilePic] = useState("");
+  const [image, setImage] = useState("");
 
   const id = user._id;
+
+  const getImage = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(uploadProfilePic(id));
-    console.log("UPLOADED");
-  };
-
-  const handleFileChange = ({ target }) => {
-    setProfilePic(target.files[0]);
+    console.log("INSIDE PROFILE HANDLESUBMIT ==>", image);
   };
 
   return (
@@ -43,9 +41,9 @@ const Profile = () => {
                 type="file"
                 accept="image/"
                 id="file"
-                onChange={handleFileChange}
+                onChange={getImage}
               />
-              <label for="file">Choose file</label>
+              <label htmlFor="file">Choose file</label>
               <input className={styles.inputs} type="submit" value="Save" />
             </form>
           </div>
