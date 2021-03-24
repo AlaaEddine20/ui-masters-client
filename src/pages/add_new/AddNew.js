@@ -54,7 +54,7 @@ const AddNew = () => {
         autoComplete="off"
         className={styles.form_wrapper}
       >
-        <label htmlFor="title">Title</label>
+        <label htmlFor="title">Give it a title</label>
         <input onChange={getTitle} type="text" name="title" />
       </form>
       <Editor

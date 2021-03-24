@@ -24,12 +24,6 @@ function generateLinks(id) {
       path: "/components/" + id,
       icon: <i className="fab fa-react"></i>,
     },
-    // {
-    //   id: 5,
-    //   name: "Settings",
-    //   path: "/settings",
-    //   icon: <i className="fas fa-cogs"></i>,
-    // },
   ];
 }
 

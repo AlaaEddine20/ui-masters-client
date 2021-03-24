@@ -13,7 +13,7 @@
       padding: 0.5rem 3rem;
       background-color: transparent;
       border: 2px solid #9147ff;
-      color: #fff;
+      color: #f2f5f5;
 
       &:hover {
         background-color: #9147ff;
@@ -27,8 +27,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
-  background-color: rgb(36, 36, 36);
+  justify-content: space-around;
 }
 
 .custom textarea {
@@ -42,7 +41,7 @@
   justify-content: center;
 
   label {
-    color: #fff;
+    color: #f2f5f5;
   }
 
   input {
@@ -50,7 +49,9 @@
     border: none;
     background: transparent;
     border-bottom: 2px solid #9147ff62;
-    color: #fff;
+    border-right: 2px solid #9147ff62;
+    border-left: 2px solid #9147ff62;
+    color: #f2f5f5;
   }
 }
 

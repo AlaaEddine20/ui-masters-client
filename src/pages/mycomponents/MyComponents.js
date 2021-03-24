@@ -16,16 +16,19 @@ const MyComponents = () => {
 
   const params = useParams();
 
-  console.log("POSTS IN MY COMPONENT =>", posts);
-
   useEffect(() => {
     dispatch(getUserPosts(params.id));
   }, []);
 
-  return posts.length > 0 ? (
-    <div className={styles.post_container}>
-      {posts?.map((post, id) => (
-        <MyEditor key={id} post={post} />
+  return posts?.length > 0 ? (
+    <div className={styles.wrapper}>
+      {posts.map((post, id) => (
+        <div className={styles.post_container}>
+          <div className={styles.post_info}>
+            <h5>{post.title}</h5>
+          </div>
+          <MyEditor key={id} post={post} />
+        </div>
       ))}
     </div>
   ) : (

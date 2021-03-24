@@ -40,12 +40,10 @@ export const addPost = (postData) => async (dispatch) => {
 
 export const getUserPosts = (id) => async (dispatch) => {
   try {
-    dispatch({
+    await dispatch({
       type: POST_LOADING,
       payload: {
-        payload: {
-          isLoading: true,
-        },
+        isLoading: true,
       },
     });
 
@@ -61,7 +59,7 @@ export const getUserPosts = (id) => async (dispatch) => {
       config
     );
 
-    dispatch({
+    await dispatch({
       type: POST_SUCCESS,
       payload: {
         posts: res.data,
@@ -71,7 +69,7 @@ export const getUserPosts = (id) => async (dispatch) => {
     dispatch({
       type: POST_FAIL,
       payload: {
-        error: error.response.data.error,
+        error,
       },
     });
   }

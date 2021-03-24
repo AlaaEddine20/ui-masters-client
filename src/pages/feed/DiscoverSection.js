@@ -10,7 +10,6 @@ const DiscoverSection = () => {
   const posts = useSelector((state) => state.postsReducer.posts);
 
   const isLoading = useSelector((state) => state.postReducer.isLoading);
-  console.log("DISCOVER PAGE => ", isLoading);
 
   useEffect(() => {
     dispatch(getAllPosts());
@@ -20,7 +19,7 @@ const DiscoverSection = () => {
     <>
       <header className={styles.wrapper}>
         <h3 style={{ color: "#fff" }}>Discover other Devs components</h3>
-        {posts?.map((post, id) => (
+        {posts.map((post, id) => (
           <div className={styles.post_container}>
             <div className={styles.post_info}>
               <h5>{post.title}</h5>

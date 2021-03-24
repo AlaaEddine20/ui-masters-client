@@ -4,13 +4,11 @@ import styles from "./Editor.module.scss";
 
 function MyEditor({ post }) {
   return (
-    <div className={styles.editor_wrapper}>
-      <Editor
-        className={styles.container}
-        initialJs={post.js}
-        initialCss={post.css}
-      />
-    </div>
+    <Editor
+      className={styles.container}
+      initialJs={post.js}
+      initialCss={post.css}
+    />
   );
 }
 
