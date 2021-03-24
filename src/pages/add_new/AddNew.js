@@ -28,7 +28,6 @@ const AddNew = () => {
   };
 
   const isLoading = useSelector((state) => state.postReducer.isLoading);
-  console.log("ADD NEW POST PAGE =>", isLoading);
 
   const dispatch = useDispatch();
 

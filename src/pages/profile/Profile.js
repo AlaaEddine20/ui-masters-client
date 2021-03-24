@@ -2,26 +2,23 @@ import React, { useState } from "react";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { uploadProfilePic } from "./../../redux/actions/userActions";
+import avatar from "./avatar.png";
 // styles
 import LoadingBar from "./LoadingBar";
 import styles from "./Profile.module.scss";
 
 const Profile = () => {
-  const user = useSelector((state) => state.authReducer.user);
-  const isLoading = useSelector((state) => state.updateUserReducer.isLoading);
+  const user = useSelector((state) => state.userReducer.user);
+  const isLoading = useSelector((state) => state.userReducer.isLoading);
   const dispatch = useDispatch();
 
   const [image, setImage] = useState("");
 
   const id = user._id;
 
-  const getImage = (e) => {
-    setImage(e.target.files[0]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(uploadProfilePic(id));
+    dispatch(uploadProfilePic(id, image));
     console.log("INSIDE PROFILE HANDLESUBMIT ==>", image);
   };
 
@@ -29,7 +26,12 @@ const Profile = () => {
     <div className={styles.profile_container}>
       <div className={styles.wrapper_profile}>
         <div className={styles.profile_pic}>
-          <img src={user.profilePic} alt="profile-pic" />
+          {user.profilePic ? (
+            <img src={user.profilePic} alt="profile-pic" />
+          ) : (
+            <img src={avatar} alt="profile-pic" />
+          )}
+
           {isLoading ? <LoadingBar /> : null}
           <div className={styles.form}>
             <form
@@ -41,7 +43,7 @@ const Profile = () => {
                 type="file"
                 accept="image/"
                 id="file"
-                onChange={getImage}
+                onChange={(e) => setImage(e.target.files[0])}
               />
               <label htmlFor="file">Choose file</label>
               <input className={styles.inputs} type="submit" value="Save" />

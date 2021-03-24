@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import styles from "./Sidebar.module.scss";
 
 const SideBar = () => {
-  const id = useSelector((state) => state.authReducer.user._id);
+  const id = useSelector((state) => state.userReducer.user._id);
   const links = generateLinks(id);
 
   return (

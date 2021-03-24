@@ -2,8 +2,11 @@ import {
   AUTH_SUCCESS,
   AUTH_LOADING,
   AUTH_LOGOUT,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAIL,
   AUTH_FAIL,
-} from "../constants/authConstants";
+  UPDATE_USER_LOADING,
+} from "../constants/userConstants";
 
 const initialState = {
   user: null,
@@ -12,7 +15,7 @@ const initialState = {
   error: false,
 };
 
-export const authReducer = (state = initialState, action) => {
+export const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case AUTH_SUCCESS:
@@ -38,6 +41,7 @@ export const authReducer = (state = initialState, action) => {
         ...payload,
         isLoading: false,
         isLoggedIn: false,
+        error: true,
       };
 
     case AUTH_LOGOUT:
@@ -47,6 +51,31 @@ export const authReducer = (state = initialState, action) => {
         user: null,
         isLoggedIn: false,
         isLoading: false,
+        error: payload,
+      };
+
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        user: { ...state.user, ...payload },
+        isLoggedIn: true,
+        isLoading: false,
+      };
+
+    case UPDATE_USER_LOADING:
+      return {
+        ...state,
+        isLoggedIn: false,
+        isLoading: true,
+        error: false,
+      };
+
+    case UPDATE_USER_FAIL:
+      return {
+        ...state,
+        ...payload,
+        isLoading: false,
+        isLoggedIn: true,
         error: payload,
       };
 

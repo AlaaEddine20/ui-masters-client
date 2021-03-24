@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // Router
 import { Link } from "react-router-dom";
 // Redux
-import { login } from "../../redux/actions/authAction";
+import { login } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 // Styles
 import { Spinner } from "react-bootstrap";
@@ -17,7 +17,7 @@ const Login = () => {
   const [showPwt, setShowPwt] = useState(false);
 
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.authReducer.isLoading);
+  const isLoading = useSelector((state) => state.userReducer.isLoading);
 
   const handleSubmit = (e) => {
     e.preventDefault();

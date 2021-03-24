@@ -16,7 +16,7 @@ import DiscoverSection from "./pages/feed/DiscoverSection";
 import "./App.css";
 
 function App() {
-  const user = useSelector((state) => state.authReducer.user);
+  const user = useSelector((state) => state.userReducer.user);
 
   return (
     <div className="App">
