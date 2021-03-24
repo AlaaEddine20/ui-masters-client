@@ -23,7 +23,7 @@ const MyComponents = () => {
   }, []);
 
   return posts.length > 0 ? (
-    <div>
+    <div className={styles.post_container}>
       {posts?.map((post, id) => (
         <MyEditor key={id} post={post} />
       ))}

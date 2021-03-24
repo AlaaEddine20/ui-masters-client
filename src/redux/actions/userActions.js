@@ -1,32 +1,40 @@
 import {
-  UPLOAD_PIC_SUCCESS,
-  UPLOAD_PIC_FAIL,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_LOADING,
+  UPDATE_USER_FAIL,
 } from "./../constants/userConstants";
 import axios from "axios";
 
-// export const uploadProfilePic = (id) => async (dispatch) => {
-//   try {
-//     const config = {
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     };
+export const uploadProfilePic = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: UPDATE_USER_LOADING,
+      payload: {
+        isLoading: true,
+      },
+    });
 
-//     const res = await axios.post(
-//       `http://localhost:8000/users/${id}/upload`,
-//       config
-//     );
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-//     dispatch({
-//       type: UPLOAD_PIC_SUCCESS,
-//       payload: res.data,
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: UPLOAD_PIC_FAIL,
-//       payload: {
-//         error: error.response.data.error,
-//       },
-//     });
-//   }
-// };
+    const res = await axios.post(
+      `http://localhost:8000/users/${id}/upload`,
+      config
+    );
+
+    dispatch({
+      type: UPDATE_USER_SUCCESS,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_USER_FAIL,
+      payload: {
+        error: error.response.data.error,
+      },
+    });
+  }
+};

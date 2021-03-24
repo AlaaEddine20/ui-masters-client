@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { uploadProfilePic } from "./../../redux/actions/userActions";
 // axios
 import axios from "axios";
 // styles
@@ -9,39 +10,17 @@ import styles from "./Profile.module.scss";
 
 const Profile = () => {
   const user = useSelector((state) => state.authReducer.user);
+  const isLoading = useSelector((state) => state.uploadUserReducer.isLoading);
+  const dispatch = useDispatch();
 
   const [profilePic, setProfilePic] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const id = user._id;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      setIsLoading(true);
-      console.log("LOADING");
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      };
-
-      const formData = new FormData();
-      formData.append("image", profilePic);
-
-      const res = await axios.post(
-        process.env.REACT_APP_URL + "/users/" + id + "/upload",
-        formData,
-        config
-      );
-
-      setProfilePic(res.data.profilePic);
-      setIsLoading(false);
-      console.log("UPLOADED");
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(uploadProfilePic(id));
+    console.log("UPLOADED");
   };
 
   const handleFileChange = ({ target }) => {
