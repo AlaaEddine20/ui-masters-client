@@ -14,6 +14,7 @@ import Header from "./components/header/Header";
 import DiscoverSection from "./pages/feed/DiscoverSection";
 // css
 import "./App.css";
+import Register from "./pages/register/Register";
 
 function App() {
   const user = useSelector((state) => state.userReducer.user);
@@ -48,6 +49,9 @@ function App() {
       )}
       <Route exact path="/">
         <Redirect to="/login" />
+      </Route>
+      <Route path="/register">
+        <Register />
       </Route>
       <Route path="/login">
         {user ? <Redirect to="/profile" /> : <Login />}

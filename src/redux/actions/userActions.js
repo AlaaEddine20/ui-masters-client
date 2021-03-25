@@ -76,11 +76,6 @@ export const login = (userData) => async (dispatch) => {
   try {
     dispatch({
       type: AUTH_LOADING,
-      payload: {
-        payload: {
-          isLoading: true,
-        },
-      },
     });
     const config = {
       headers: {
@@ -118,29 +113,25 @@ export const login = (userData) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   try {
-    dispatch({
-      type: AUTH_LOADING,
-      payload: {
-        payload: {
-          isLoading: true,
-        },
-      },
-    });
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+    // dispatch({
+    //   type: AUTH_LOADING,
+    // });
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //   },
+    // };
 
-    const res = await axios.post("http://localhost:8000/users/logout", config);
+    // const res = await axios.post("http://localhost:8000/users/logout", config);
 
-    const accessToken = res.data.accessToken;
-    localStorage.getItem("token", accessToken);
+    // console.log("LOGOUT HERE ==>", res);
 
     dispatch({
       type: USER_LOGOUT,
-      token: res.data.accessToken,
-      user: res.data.user,
+      payload: {
+        user: null,
+      },
     });
   } catch (error) {
     dispatch({
