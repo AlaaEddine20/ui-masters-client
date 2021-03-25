@@ -32,7 +32,7 @@ export const addPost = (postData) => async (dispatch) => {
     dispatch({
       type: POST_FAIL,
       payload: {
-        error: error.response.data.error,
+        error,
       },
     });
   }
@@ -40,7 +40,7 @@ export const addPost = (postData) => async (dispatch) => {
 
 export const getUserPosts = (id) => async (dispatch) => {
   try {
-    await dispatch({
+    dispatch({
       type: POST_LOADING,
       payload: {
         isLoading: true,
@@ -59,7 +59,7 @@ export const getUserPosts = (id) => async (dispatch) => {
       config
     );
 
-    await dispatch({
+    dispatch({
       type: POST_SUCCESS,
       payload: {
         userPosts: res.data,
@@ -77,6 +77,10 @@ export const getUserPosts = (id) => async (dispatch) => {
 
 export const deletePost = (postId) => async (dispatch) => {
   try {
+    dispatch({
+      type: POST_LOADING,
+    });
+
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +93,7 @@ export const deletePost = (postId) => async (dispatch) => {
       config
     );
 
-    await dispatch({
+    dispatch({
       type: POST_SUCCESS,
       payload: {
         userPosts: res.data,

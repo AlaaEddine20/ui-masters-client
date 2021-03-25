@@ -36,7 +36,7 @@ export const getAllPosts = () => async (dispatch) => {
     dispatch({
       type: POSTS_FAIL,
       payload: {
-        error: error.response.data.error,
+        error,
       },
     });
   }

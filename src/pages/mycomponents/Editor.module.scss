@@ -36,6 +36,22 @@
   }
 }
 
+.delete_btn {
+  position: relative;
+  left: 90%;
+  top: 53px;
+  background-color: #f13d37;
+  padding: 3px 7px;
+  border: none;
+  border-radius: 5px;
+  color: #f2f5f5;
+
+  &:hover {
+    background-color: #f2f5f5;
+    color: #f13d37;
+  }
+}
+
 .custom textarea {
   outline: none;
 }

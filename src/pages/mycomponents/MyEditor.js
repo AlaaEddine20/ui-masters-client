@@ -6,7 +6,12 @@ import styles from "./Editor.module.scss";
 function MyEditor({ post, deletePostFunction, postId }) {
   return (
     <>
-      <button onClick={() => deletePostFunction(postId)}> Delete</button>
+      <button
+        className={styles.delete_btn}
+        onClick={() => deletePostFunction(postId)}
+      >
+        Delete
+      </button>
       <Editor
         className={styles.container}
         initialJs={post.js}

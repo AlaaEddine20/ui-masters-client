@@ -4,7 +4,7 @@ import {
   AUTH_LOADING,
   UPDATE_USER_LOADING,
   UPDATE_USER_FAIL,
-  AUTH_LOGOUT,
+  USER_LOGOUT,
   UPDATE_USER_SUCCESS,
 } from "../constants/userConstants";
 import axios from "axios";
@@ -117,9 +117,39 @@ export const login = (userData) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  dispatch({
-    type: AUTH_LOGOUT,
-  });
+  try {
+    dispatch({
+      type: AUTH_LOADING,
+      payload: {
+        payload: {
+          isLoading: true,
+        },
+      },
+    });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const res = await axios.post("http://localhost:8000/users/logout", config);
+
+    const accessToken = res.data.accessToken;
+    localStorage.getItem("token", accessToken);
+
+    dispatch({
+      type: USER_LOGOUT,
+      token: res.data.accessToken,
+      user: res.data.user,
+    });
+  } catch (error) {
+    dispatch({
+      type: AUTH_FAIL,
+      payload: {
+        error: error,
+      },
+    });
+  }
 };
 
 export const uploadProfilePic = (id, image) => async (dispatch) => {

@@ -1,7 +1,7 @@
 import {
   AUTH_SUCCESS,
   AUTH_LOADING,
-  AUTH_LOGOUT,
+  USER_LOGOUT,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAIL,
   AUTH_FAIL,
@@ -44,7 +44,7 @@ export const userReducer = (state = initialState, action) => {
         error: true,
       };
 
-    case AUTH_LOGOUT:
+    case USER_LOGOUT:
       return {
         ...state,
         ...payload,

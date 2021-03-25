@@ -8,6 +8,7 @@ import {
 const initialState = {
   userPosts: null,
   isLoading: false,
+  posted: false,
   error: false,
 };
 
@@ -19,6 +20,7 @@ export const postReducer = (state = initialState, action) => {
         ...state,
         ...payload,
         isLoading: false,
+        posted: true,
         error: false,
       };
 
@@ -26,6 +28,7 @@ export const postReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+        posted: false,
         error: false,
       };
 
@@ -35,6 +38,7 @@ export const postReducer = (state = initialState, action) => {
         ...payload,
         userPosts: null,
         isLoading: false,
+        posted: false,
         error: payload,
       };
 
