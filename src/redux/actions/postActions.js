@@ -25,7 +25,7 @@ export const addPost = (postData) => async (dispatch) => {
     dispatch({
       type: POST_SUCCESS,
       payload: {
-        post: res.data.newPost,
+        userPosts: res.data.newPost,
       },
     });
   } catch (error) {
@@ -62,7 +62,37 @@ export const getUserPosts = (id) => async (dispatch) => {
     await dispatch({
       type: POST_SUCCESS,
       payload: {
-        posts: res.data,
+        userPosts: res.data,
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: POST_FAIL,
+      payload: {
+        error,
+      },
+    });
+  }
+};
+
+export const deletePost = (postId) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+
+    const res = await axios.delete(
+      "http://localhost:8000/posts/" + postId,
+      config
+    );
+
+    await dispatch({
+      type: POST_SUCCESS,
+      payload: {
+        userPosts: res.data,
       },
     });
   } catch (error) {

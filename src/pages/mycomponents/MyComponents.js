@@ -3,31 +3,39 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { getUserPosts } from "../../redux/actions/postActions";
+import { getUserPosts, deletePost } from "../../redux/actions/postActions";
 // components
 import MyEditor from "./MyEditor";
 // styles
 import styles from "./Editor.module.scss";
 
 const MyComponents = () => {
-  const posts = useSelector((state) => state.postReducer.posts);
+  const posts = useSelector((state) => state.postReducer.userPosts);
 
   const dispatch = useDispatch();
 
-  const params = useParams();
+  const userId = useParams();
+
+  const deletePostFunction = (postId) => {
+    dispatch(deletePost(postId));
+  };
 
   useEffect(() => {
-    dispatch(getUserPosts(params.id));
+    dispatch(getUserPosts(userId.id));
   }, []);
 
   return posts?.length > 0 ? (
     <div className={styles.wrapper}>
-      {posts.map((post, id) => (
-        <div className={styles.post_container}>
+      {posts.map((post, idx) => (
+        <div key={idx} className={styles.post_container}>
           <div className={styles.post_info}>
             <h5>{post.title}</h5>
           </div>
-          <MyEditor key={id} post={post} />
+          <MyEditor
+            postId={post._id}
+            post={post}
+            deletePostFunction={deletePostFunction}
+          />
         </div>
       ))}
     </div>

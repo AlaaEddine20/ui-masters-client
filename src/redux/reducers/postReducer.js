@@ -2,10 +2,11 @@ import {
   POST_SUCCESS,
   POST_LOADING,
   POST_FAIL,
+  POST_DELETE,
 } from "../constants/postConstants";
 
 const initialState = {
-  posts: null,
+  userPosts: null,
   isLoading: false,
   error: false,
 };
@@ -32,9 +33,15 @@ export const postReducer = (state = initialState, action) => {
       return {
         ...state,
         ...payload,
-        posts: null,
+        userPosts: null,
         isLoading: false,
         error: payload,
+      };
+
+    case POST_DELETE:
+      return {
+        ...state,
+        userPosts: state.userPosts.filter((post) => post !== payload),
       };
 
     default:

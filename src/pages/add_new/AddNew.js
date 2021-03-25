@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Spinner } from "react-bootstrap";
 // editor
 import Editor from "react-code-live";
 // redux
@@ -36,19 +35,20 @@ const AddNew = () => {
     dispatch(addPost(postData));
   };
 
-  return isLoading ? (
-    <div className={styles.spinner}>
-      <Spinner animation="grow" variant="info" />
-    </div>
-  ) : (
+  return (
     <div className={styles.wrapper}>
       <h3 style={{ color: "#fff", marginBottom: "50px" }}>
         Upload your next component
       </h3>
 
       <div className={styles.btn_wrapper}>
-        <button onClick={handleSubmit}>Submit</button>
+        {isLoading ? (
+          <button onClick={handleSubmit}>Loading...</button>
+        ) : (
+          <button onClick={handleSubmit}>Submit</button>
+        )}
       </div>
+
       <form
         onSubmit={handleSubmit}
         autoComplete="off"
