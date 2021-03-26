@@ -46,7 +46,7 @@ export const postReducer = (state = initialState, action) => {
       return {
         ...state,
         userPosts: state.userPosts.filter((post) => post._id !== payload._id),
-        posted: false,
+        isLoading: false,
       };
 
     default:

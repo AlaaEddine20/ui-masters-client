@@ -20,7 +20,6 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(uploadProfilePic(id, image));
-    console.log("INSIDE PROFILE HANDLESUBMIT ==>", image);
   };
 
   const removeImage = () => {

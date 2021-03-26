@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { login } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 // Styles
-import { Spinner } from "react-bootstrap";
 import styles from "./Login.module.scss";
+import Loader from "../../components/loaders/login_loaders/LoginLoader";
 
 const Login = () => {
   const [userLoginData, setUserLoginData] = useState({
@@ -29,9 +29,9 @@ const Login = () => {
   };
 
   return isLoading ? (
-    <div className={styles.spinner}>
-      <Spinner animation="grow" variant="info" />
-    </div>
+    <>
+      <Loader />
+    </>
   ) : (
     <>
       <div className={styles.login}>
