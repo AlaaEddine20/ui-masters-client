@@ -23,11 +23,11 @@ const DiscoverSection = () => {
           <div className={styles.post_container}>
             <div className={styles.post_info}>
               <h5>{post.title}</h5>
-              Posted by
-              <span>
+              <span className="mr-2">Posted by</span>
+              <span className={styles.username}>
                 {post.user.name} {post.user.lastname}
               </span>
-              <span className="ml-2">
+              <span className="ml-1">
                 <img src={post.user.profilePic} alt="profile-pic" />
               </span>
             </div>

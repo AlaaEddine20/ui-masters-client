@@ -11,7 +11,6 @@ import styles from "./Editor.module.scss";
 
 const MyComponents = () => {
   const myPosts = useSelector((state) => state.postReducer.userPosts);
-  console.log(myPosts);
 
   const dispatch = useDispatch();
 
