@@ -89,16 +89,12 @@ export const deletePost = (postId) => async (dispatch) => {
       },
     };
 
-    const res = await axios.delete(
-      "http://localhost:8000/posts/" + postId,
-      config
-    );
-    console.log(res.data);
+    await axios.delete("http://localhost:8000/posts/" + postId, config);
 
     dispatch({
       type: POST_DELETE,
       payload: {
-        userPosts: res.data,
+        _id: postId,
       },
     });
   } catch (error) {

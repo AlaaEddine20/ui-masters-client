@@ -8,12 +8,16 @@ import {
   UPDATE_USER_LOADING,
 } from "../constants/userConstants";
 
-const initialState = {
-  user: null,
-  isLoggedIn: false,
-  isLoading: false,
-  error: false,
-};
+const initialState = localStorage.getItem("persist:root")
+  ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")).userReducer)
+  : {
+      user: null,
+      isLoggedIn: false,
+      isLoading: false,
+      error: false,
+    };
+
+console.log({ initialState });
 
 export const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
