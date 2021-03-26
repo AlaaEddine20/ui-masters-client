@@ -10,7 +10,8 @@ import MyEditor from "./MyEditor";
 import styles from "./Editor.module.scss";
 
 const MyComponents = () => {
-  const posts = useSelector((state) => state.postReducer.userPosts);
+  const myPosts = useSelector((state) => state.postReducer.userPosts);
+  console.log(myPosts);
 
   const dispatch = useDispatch();
 
@@ -24,9 +25,9 @@ const MyComponents = () => {
     dispatch(getUserPosts(userId.id));
   }, []);
 
-  return posts?.length > 0 ? (
+  return myPosts?.length > 0 ? (
     <div className={styles.wrapper}>
-      {posts.map((post, idx) => (
+      {myPosts.map((post, idx) => (
         <div key={idx} className={styles.post_container}>
           <div className={styles.post_info}>
             <h5>{post.title}</h5>

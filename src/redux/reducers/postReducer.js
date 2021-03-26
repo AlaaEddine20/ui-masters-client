@@ -46,6 +46,7 @@ export const postReducer = (state = initialState, action) => {
       return {
         ...state,
         userPosts: state.userPosts.filter((post) => post !== payload),
+        posted: false,
       };
 
     default:

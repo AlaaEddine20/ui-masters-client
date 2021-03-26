@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Badge } from "react-bootstrap";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { uploadProfilePic } from "./../../redux/actions/userActions";
@@ -16,18 +17,32 @@ const Profile = () => {
 
   const id = user._id;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(uploadProfilePic(id, image));
     console.log("INSIDE PROFILE HANDLESUBMIT ==>", image);
+  };
+
+  const removeImage = () => {
+    setImage({ image: null });
   };
 
   return (
     <div className={styles.profile_container}>
       <div className={styles.wrapper_profile}>
         <div className={styles.profile_pic}>
-          {user.profilePic ? (
-            <img src={user.profilePic} alt="profile-pic" />
+          {user.profilePic.length > 0 ? (
+            <>
+              <Badge
+                onClick={removeImage}
+                className={styles.badge}
+                variant="danger"
+              >
+                Remove
+              </Badge>
+
+              <img src={user.profilePic} alt="profile-pic" />
+            </>
           ) : (
             <img src={avatar} alt="profile-pic" />
           )}

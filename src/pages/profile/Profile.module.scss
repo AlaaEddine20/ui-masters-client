@@ -16,6 +16,15 @@
   align-items: center;
   justify-content: center;
 
+  .badge {
+    position: relative;
+    top: 20px;
+    left: 73px;
+    cursor: pointer;
+    font-size: 0.6rem;
+    font-weight: 300;
+  }
+
   img {
     width: 200px;
   }

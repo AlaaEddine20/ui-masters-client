@@ -2,6 +2,7 @@ import {
   POST_SUCCESS,
   POST_LOADING,
   POST_FAIL,
+  POST_DELETE,
 } from "../constants/postConstants";
 import axios from "axios";
 
@@ -92,9 +93,10 @@ export const deletePost = (postId) => async (dispatch) => {
       "http://localhost:8000/posts/" + postId,
       config
     );
+    console.log(res.data);
 
     dispatch({
-      type: POST_SUCCESS,
+      type: POST_DELETE,
       payload: {
         userPosts: res.data,
       },
