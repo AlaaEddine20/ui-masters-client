@@ -6,7 +6,7 @@ import { login } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 // Styles
 import styles from "./Login.module.scss";
-import Loader from "../../components/loaders/login_loaders/LoginLoader";
+import LoginLoader from "../../components/loaders/login/LoginLoader";
 
 const Login = () => {
   const [userLoginData, setUserLoginData] = useState({
@@ -30,7 +30,7 @@ const Login = () => {
 
   return isLoading ? (
     <>
-      <Loader />
+      <LoginLoader />
     </>
   ) : (
     <>

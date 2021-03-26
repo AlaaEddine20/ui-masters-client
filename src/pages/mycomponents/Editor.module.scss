@@ -38,13 +38,15 @@
 
 .delete_btn {
   position: relative;
+  width: 80px;
   left: 90%;
   top: 53px;
   background-color: #f13d37;
-  padding: 3px 7px;
+  padding: 4px 12px;
   border: none;
   border-radius: 5px;
   color: #f2f5f5;
+  font-size: 0.8rem;
 
   &:hover {
     background-color: #f2f5f5;

@@ -1,5 +1,4 @@
 import React from "react";
-import { Spinner } from "react-bootstrap";
 import Editor from "react-code-live";
 import { useSelector } from "react-redux";
 import styles from "./Editor.module.scss";
@@ -10,12 +9,7 @@ function MyEditor({ post, deletePostFunction, postId }) {
   return (
     <>
       {isLoading ? (
-        <div className="lds-ellipsis">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+        <button className={styles.delete_btn}>Deleting...</button>
       ) : (
         <button
           className={styles.delete_btn}

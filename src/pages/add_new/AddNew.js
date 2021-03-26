@@ -43,7 +43,7 @@ const AddNew = () => {
 
       <div className={styles.btn_wrapper}>
         {isLoading ? (
-          <button onClick={handleSubmit}>Loading...</button>
+          <button onClick={handleSubmit}>Sending...</button>
         ) : (
           <button onClick={handleSubmit}>Submit</button>
         )}
