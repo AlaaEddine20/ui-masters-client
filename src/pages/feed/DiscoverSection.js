@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts } from "../../redux/actions/postsActions";
+import { getAllPosts, likePost } from "../../redux/actions/postsActions";
 import MyEditor from "./MyEditor";
 import styles from "./Discover.module.scss";
 
@@ -17,7 +17,7 @@ const DiscoverSection = () => {
 
   return (
     <>
-      <header className={styles.wrapper}>
+      <div className={styles.wrapper}>
         <h3 style={{ color: "#fff" }}>Discover other Devs components</h3>
         {posts?.map((post, id) => (
           <div className={styles.post_container}>
@@ -30,11 +30,16 @@ const DiscoverSection = () => {
               <span className="ml-1">
                 <img src={post.user.profilePic} alt="profile-pic" />
               </span>
+              <div className={styles.likes_container}>
+                <button onClick={() => dispatch(likePost(post._id))}>
+                  <i className="far fa-heart"></i>
+                </button>
+              </div>
             </div>
             <MyEditor key={id} post={post} />
           </div>
         ))}
-      </header>
+      </div>
     </>
   );
 };

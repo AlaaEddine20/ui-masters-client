@@ -2,7 +2,10 @@ import {
   POSTS_SUCCESS,
   POSTS_LOADING,
   POSTS_FAIL,
-} from "./../constants/allPostsConstants";
+  POST_LOADING,
+  POST_LIKED,
+  POST_FAIL,
+} from "./../constants/postConstants";
 import axios from "axios";
 
 export const getAllPosts = () => async (dispatch) => {
@@ -35,6 +38,40 @@ export const getAllPosts = () => async (dispatch) => {
     console.log(error);
     dispatch({
       type: POSTS_FAIL,
+      payload: {
+        error,
+      },
+    });
+  }
+};
+
+export const likePost = (postId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: POST_LOADING,
+    });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+
+    const res = await axios.put(
+      "http://localhost:8000/posts/like/" + postId,
+      config
+    );
+
+    dispatch({
+      type: POST_LIKED,
+      payload: {
+        likes: res.data,
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: POST_FAIL,
       payload: {
         error,
       },

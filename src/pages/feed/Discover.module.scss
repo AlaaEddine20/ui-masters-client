@@ -30,11 +30,16 @@
       color: #9147ff;
     }
   }
-  // div[data-id="js-container"] {
-  //   display: none;
-  // }
 
-  // div[data-id="css-container"] {
-  //   display: none;
-  // }
+  .likes_container {
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      i {
+        color: #fff;
+      }
+    }
+  }
 }
