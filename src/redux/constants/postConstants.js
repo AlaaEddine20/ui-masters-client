@@ -4,6 +4,7 @@ export const POST_LOADING = "POST_LOADING";
 export const POST_FAIL = "POST_FAIL";
 export const POST_DELETE = "POST_DELETE";
 export const POST_LIKED = "POST_LIKED";
+export const POST_UNLIKED = "POST_UNLIKED";
 // ALL POSTS
 export const POSTS_SUCCESS = "POSTS_SUCCESS";
 export const POSTS_LOADING = "POSTS_LOADING";

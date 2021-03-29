@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts, likePost } from "../../redux/actions/postsActions";
+import {
+  getAllPosts,
+  likePost,
+  unLikePost,
+} from "../../redux/actions/postsActions";
 import MyEditor from "./MyEditor";
 import styles from "./Discover.module.scss";
 import { Container } from "react-bootstrap";
@@ -23,6 +27,11 @@ const DiscoverSection = () => {
     setIsLiked((prev) => !prev);
   };
 
+  const handleUnLike = (postId) => {
+    dispatch(unLikePost(postId));
+    setIsLiked((prev) => !prev);
+  };
+
   // console.log(posts[0].likes);
 
   return (
@@ -41,7 +50,13 @@ const DiscoverSection = () => {
                 <img src={post.user.profilePic} alt="profile-pic" />
               </span>
               <div className={styles.likes_container}>
-                <button onClick={() => handleLike(post._id)}>
+                <button
+                  onClick={
+                    isLiked
+                      ? () => handleUnLike(post._id)
+                      : () => handleLike(post._id)
+                  }
+                >
                   {isLiked ? (
                     <i class="fas fa-heart"></i>
                   ) : (
