@@ -3,6 +3,7 @@ import {
   POST_LOADING,
   POST_FAIL,
   POST_DELETE,
+  POST_UPDATE,
 } from "../constants/postConstants";
 
 const initialState = {
@@ -47,6 +48,14 @@ export const postReducer = (state = initialState, action) => {
         ...state,
         userPosts: state.userPosts.filter((post) => post._id !== payload._id),
         isLoading: false,
+      };
+
+    case POST_UPDATE:
+      return {
+        ...state,
+        ...payload,
+        isLoading: false,
+        error: false,
       };
 
     default:

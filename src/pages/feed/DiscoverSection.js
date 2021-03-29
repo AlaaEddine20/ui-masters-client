@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllPosts,
-  likePost,
-  unLikePost,
-} from "../../redux/actions/postsActions";
+import { getAllPosts } from "../../redux/actions/postsActions";
+import { likePost, unLikePost } from "../../redux/actions/postActions";
 import MyEditor from "./MyEditor";
 import styles from "./Discover.module.scss";
 import { Container } from "react-bootstrap";
@@ -39,7 +36,7 @@ const DiscoverSection = () => {
       <div className={styles.wrapper}>
         <h3 style={{ color: "#fff" }}>Discover other Devs components</h3>
         {posts?.map((post, id) => (
-          <div className={styles.post_container}>
+          <div key={id} className={styles.post_container}>
             <div className={styles.post_info}>
               <h5>{post.title}</h5>
               <span className="mr-2">Posted by</span>
@@ -50,26 +47,24 @@ const DiscoverSection = () => {
                 <img src={post.user.profilePic} alt="profile-pic" />
               </span>
               <div className={styles.likes_container}>
-                <button
-                  onClick={
-                    isLiked
-                      ? () => handleUnLike(post._id)
-                      : () => handleLike(post._id)
-                  }
-                >
-                  {isLiked ? (
-                    <i class="fas fa-heart"></i>
-                  ) : (
-                    <i className="far fa-heart"></i>
-                  )}
+                {isLiked ? (
+                  <i
+                    className="fas fa-heart"
+                    onClick={() => handleUnLike(post._id)}
+                  ></i>
+                ) : (
+                  <i
+                    className="far fa-heart"
+                    onClick={() => handleLike(post._id)}
+                  ></i>
+                )}
 
-                  <span style={{ color: "#fff", padding: "0 5px" }}>
-                    {post.likes.length}
-                  </span>
-                </button>
+                <span style={{ color: "#fff", padding: "0 5px" }}>
+                  {post.likes.length}
+                </span>
               </div>
             </div>
-            <MyEditor key={id} post={post} />
+            <MyEditor post={post} />
           </div>
         ))}
       </div>

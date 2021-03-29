@@ -32,14 +32,9 @@
   }
 
   .likes_container {
-    button {
-      background: none;
-      border: none;
+    i {
+      color: #fff;
       cursor: pointer;
-
-      i {
-        color: #fff;
-      }
     }
   }
 }
