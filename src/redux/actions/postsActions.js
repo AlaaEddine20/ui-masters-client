@@ -68,7 +68,7 @@ export const likePost = (postId) => async (dispatch) => {
     dispatch({
       type: POST_LIKED,
       payload: {
-        likes: res.data._id,
+        _id: res.data.user._id,
       },
     });
   } catch (error) {

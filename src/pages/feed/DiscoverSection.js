@@ -15,7 +15,7 @@ const DiscoverSection = () => {
   useEffect(() => {
     dispatch(getAllPosts());
   }, []);
-  // console.log(posts[0].likes[0]._id);
+  console.log(posts[0].likes);
 
   return (
     <Container fluid>
@@ -36,11 +36,14 @@ const DiscoverSection = () => {
                 <button
                   onClick={() =>
                     dispatch(likePost(post._id), () => {
-                      console.log(post[0].likes[0]._id);
+                      console.log(post._id);
                     })
                   }
                 >
                   <i className="far fa-heart"></i>
+                  <span style={{ color: "#fff", padding: "0 5px" }}>
+                    {post.likes.length}
+                  </span>
                 </button>
               </div>
             </div>

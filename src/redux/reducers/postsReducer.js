@@ -41,7 +41,7 @@ export const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         likes: state.posts[0].likes[0].filter(
-          (like) => like._d !== payload._id
+          (like) => like._id !== payload._id
         ),
         isLoading: false,
         error: false,
