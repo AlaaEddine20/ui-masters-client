@@ -9,6 +9,7 @@ import LikeButton from "./LikeButton";
 
 const DiscoverSection = () => {
   const [isLiked, setIsLiked] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -29,8 +30,10 @@ const DiscoverSection = () => {
     dispatch(unLikePost(postId));
     setIsLiked(false);
   };
-  // console.log(posts[0].user._id);
-  console.log(posts[0].likes);
+
+  const toggleShowCode = () => {
+    setIsOpen(!isOpen);
+  };
 
   // useEffect(() => {
   //   if (posts[0].likes.find((like) => like._id === posts[0].user._id)) {
@@ -39,7 +42,7 @@ const DiscoverSection = () => {
   // }, [posts[0].likes, posts[0].user._id]);
 
   return (
-    <Container fluid>
+    <Container>
       <div className={styles.wrapper}>
         <h3 style={{ color: "#fff" }}>Discover other Devs components</h3>
         {posts?.map((post, id) => (
@@ -67,6 +70,9 @@ const DiscoverSection = () => {
               </div>
             </div>
             <MyEditor post={post} />
+            <button onClick={toggleShowCode}>
+              {isOpen ? <p>Hide code</p> : <p>Show code</p>}
+            </button>
           </div>
         ))}
       </div>
