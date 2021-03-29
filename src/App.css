@@ -52,6 +52,11 @@ div[data-id="js-container"] {
   scrollbar-color: red;
 }
 
+div[data-id="js-wrapper"] {
+  position: relative;
+  top: 20px;
+}
+
 textarea {
   outline: none;
 }
@@ -71,6 +76,11 @@ div[data-id="css-container"] {
   font-family: "Fira code", "Fira Mono", monospace;
   cursor: text;
   color: #fff;
+}
+
+div[data-id="css-wrapper"] {
+  position: relative;
+  top: 20px;
 }
 
 div[data-id="error-container"] {

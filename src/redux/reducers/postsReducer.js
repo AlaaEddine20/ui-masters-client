@@ -40,7 +40,9 @@ export const postsReducer = (state = initialState, action) => {
     case POST_LIKED:
       return {
         ...state,
-        likes: state.posts.filter((post) => post._id !== payload._id),
+        likes: state.posts[0].likes[0].filter(
+          (like) => like._d !== payload._id
+        ),
         isLoading: false,
         error: false,
       };

@@ -63,10 +63,12 @@ export const likePost = (postId) => async (dispatch) => {
       config
     );
 
+    console.log(res);
+
     dispatch({
       type: POST_LIKED,
       payload: {
-        likes: res.data,
+        likes: res.data._id,
       },
     });
   } catch (error) {

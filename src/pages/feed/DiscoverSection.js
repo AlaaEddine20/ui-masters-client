@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts, likePost } from "../../redux/actions/postsActions";
 import MyEditor from "./MyEditor";
 import styles from "./Discover.module.scss";
+import { Container } from "react-bootstrap";
 
 const DiscoverSection = () => {
   const dispatch = useDispatch();
@@ -14,9 +15,10 @@ const DiscoverSection = () => {
   useEffect(() => {
     dispatch(getAllPosts());
   }, []);
+  // console.log(posts[0].likes[0]._id);
 
   return (
-    <>
+    <Container fluid>
       <div className={styles.wrapper}>
         <h3 style={{ color: "#fff" }}>Discover other Devs components</h3>
         {posts?.map((post, id) => (
@@ -31,7 +33,13 @@ const DiscoverSection = () => {
                 <img src={post.user.profilePic} alt="profile-pic" />
               </span>
               <div className={styles.likes_container}>
-                <button onClick={() => dispatch(likePost(post._id))}>
+                <button
+                  onClick={() =>
+                    dispatch(likePost(post._id), () => {
+                      console.log(post[0].likes[0]._id);
+                    })
+                  }
+                >
                   <i className="far fa-heart"></i>
                 </button>
               </div>
@@ -40,7 +48,7 @@ const DiscoverSection = () => {
           </div>
         ))}
       </div>
-    </>
+    </Container>
   );
 };
 
