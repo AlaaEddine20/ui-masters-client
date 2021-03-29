@@ -45,7 +45,7 @@ export const getAllPosts = () => async (dispatch) => {
   }
 };
 
-export const likePost = (postId) => async (dispatch) => {
+export const likePost = (id) => async (dispatch) => {
   try {
     dispatch({
       type: POST_LOADING,
@@ -58,8 +58,11 @@ export const likePost = (postId) => async (dispatch) => {
       },
     };
 
+    const body = JSON.stringify({ postId: id });
+
     const res = await axios.put(
-      "http://localhost:8000/posts/like/" + postId,
+      "http://localhost:8000/posts/like",
+      body,
       config
     );
 
@@ -68,7 +71,7 @@ export const likePost = (postId) => async (dispatch) => {
     dispatch({
       type: POST_LIKED,
       payload: {
-        _id: res.data.user._id,
+        _id: res.data.user,
       },
     });
   } catch (error) {

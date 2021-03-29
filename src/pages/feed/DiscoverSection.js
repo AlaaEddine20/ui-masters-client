@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts, likePost } from "../../redux/actions/postsActions";
 import MyEditor from "./MyEditor";
@@ -6,6 +6,8 @@ import styles from "./Discover.module.scss";
 import { Container } from "react-bootstrap";
 
 const DiscoverSection = () => {
+  const [isLiked, setIsLiked] = useState(false);
+
   const dispatch = useDispatch();
 
   const posts = useSelector((state) => state.postsReducer.posts);
@@ -15,7 +17,13 @@ const DiscoverSection = () => {
   useEffect(() => {
     dispatch(getAllPosts());
   }, []);
-  console.log(posts[0].likes);
+
+  const handleLike = (postId) => {
+    dispatch(likePost(postId));
+    setIsLiked((prev) => !prev);
+  };
+
+  // console.log(posts[0].likes);
 
   return (
     <Container fluid>
@@ -33,14 +41,13 @@ const DiscoverSection = () => {
                 <img src={post.user.profilePic} alt="profile-pic" />
               </span>
               <div className={styles.likes_container}>
-                <button
-                  onClick={() =>
-                    dispatch(likePost(post._id), () => {
-                      console.log(post._id);
-                    })
-                  }
-                >
-                  <i className="far fa-heart"></i>
+                <button onClick={() => handleLike(post._id)}>
+                  {isLiked ? (
+                    <i class="fas fa-heart"></i>
+                  ) : (
+                    <i className="far fa-heart"></i>
+                  )}
+
                   <span style={{ color: "#fff", padding: "0 5px" }}>
                     {post.likes.length}
                   </span>
