@@ -9,7 +9,6 @@ import LikeButton from "./LikeButton";
 
 const DiscoverSection = () => {
   const [isLiked, setIsLiked] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -29,10 +28,6 @@ const DiscoverSection = () => {
   const handleUnLike = (postId) => {
     dispatch(unLikePost(postId));
     setIsLiked(false);
-  };
-
-  const toggleShowCode = () => {
-    setIsOpen(!isOpen);
   };
 
   // useEffect(() => {
@@ -70,9 +65,6 @@ const DiscoverSection = () => {
               </div>
             </div>
             <MyEditor post={post} />
-            <button onClick={toggleShowCode}>
-              {isOpen ? <p>Hide code</p> : <p>Show code</p>}
-            </button>
           </div>
         ))}
       </div>
