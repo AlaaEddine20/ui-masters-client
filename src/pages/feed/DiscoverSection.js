@@ -5,6 +5,7 @@ import { likePost, unLikePost } from "../../redux/actions/postActions";
 import MyEditor from "./MyEditor";
 import styles from "./Discover.module.scss";
 import { Container } from "react-bootstrap";
+import LikeButton from "./LikeButton";
 
 const DiscoverSection = () => {
   const [isLiked, setIsLiked] = useState(false);
@@ -21,15 +22,21 @@ const DiscoverSection = () => {
 
   const handleLike = (postId) => {
     dispatch(likePost(postId));
-    setIsLiked((prev) => !prev);
+    setIsLiked(true);
   };
 
   const handleUnLike = (postId) => {
     dispatch(unLikePost(postId));
-    setIsLiked((prev) => !prev);
+    setIsLiked(false);
   };
+  // console.log(posts[0].user._id);
+  console.log(posts[0].likes);
 
-  // console.log(posts[0].likes);
+  // useEffect(() => {
+  //   if (posts[0].likes.find((like) => like._id === posts[0].user._id)) {
+  //     setIsLiked(true);
+  //   }
+  // }, [posts[0].likes, posts[0].user._id]);
 
   return (
     <Container fluid>
@@ -47,17 +54,12 @@ const DiscoverSection = () => {
                 <img src={post.user.profilePic} alt="profile-pic" />
               </span>
               <div className={styles.likes_container}>
-                {isLiked ? (
-                  <i
-                    className="fas fa-heart"
-                    onClick={() => handleUnLike(post._id)}
-                  ></i>
-                ) : (
-                  <i
-                    className="far fa-heart"
-                    onClick={() => handleLike(post._id)}
-                  ></i>
-                )}
+                <LikeButton
+                  isLiked={isLiked}
+                  post={post}
+                  handleLike={handleLike}
+                  handleUnLike={handleUnLike}
+                />
 
                 <span style={{ color: "#fff", padding: "0 5px" }}>
                   {post.likes.length}

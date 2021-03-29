@@ -3,7 +3,8 @@ import {
   POST_LOADING,
   POST_FAIL,
   POST_DELETE,
-  POST_UPDATE,
+  POST_LIKED,
+  POST_UNLIKED,
 } from "../constants/postConstants";
 import axios from "axios";
 
@@ -129,19 +130,19 @@ export const likePost = (id) => async (dispatch) => {
       config
     );
 
-    console.log(res);
+    console.log(res.data.user);
 
     dispatch({
-      type: POST_UPDATE,
+      type: POST_LIKED,
       payload: {
-        _id: res.data.user,
+        _id: id,
       },
     });
   } catch (error) {
     dispatch({
       type: POST_FAIL,
       payload: {
-        error,
+        error: error,
       },
     });
   }
@@ -169,16 +170,16 @@ export const unLikePost = (id) => async (dispatch) => {
     );
 
     dispatch({
-      type: POST_UPDATE,
+      type: POST_UNLIKED,
       payload: {
-        _id: null,
+        _id: id,
       },
     });
   } catch (error) {
     dispatch({
       type: POST_FAIL,
       payload: {
-        error,
+        error: error,
       },
     });
   }
