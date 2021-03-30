@@ -1,12 +1,12 @@
 import React from "react";
 
-const LikeButton = ({ isLiked, handleLike, handleUnLike, post }) => {
+const LikeButton = ({ isLiked, addLike, unLike, post }) => {
   return (
     <>
       {isLiked ? (
-        <i className="fas fa-heart" onClick={() => handleUnLike(post._id)}></i>
+        <i className="fas fa-heart" onClick={() => unLike(post._id)}></i>
       ) : (
-        <i className="far fa-heart" onClick={() => handleLike(post._id)}></i>
+        <i className="far fa-heart" onClick={() => addLike(post._id)}></i>
       )}
     </>
   );

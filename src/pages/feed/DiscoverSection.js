@@ -6,29 +6,86 @@ import MyEditor from "./MyEditor";
 import styles from "./Discover.module.scss";
 import { Container } from "react-bootstrap";
 import LikeButton from "./LikeButton";
+import axios from "axios";
+import {
+  POST_LIKED,
+  POST_SUCCESS,
+  POST_UNLIKED,
+} from "../../redux/constants/postConstants";
 
 const DiscoverSection = () => {
+  const [likes, setLikes] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
 
   const dispatch = useDispatch();
 
   const posts = useSelector((state) => state.postsReducer.posts);
 
-  const isLoading = useSelector((state) => state.postReducer.isLoading);
-
   useEffect(() => {
     dispatch(getAllPosts());
   }, []);
 
-  const handleLike = (postId) => {
-    dispatch(likePost(postId));
+  const addLike = async (id) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+
+    const body = JSON.stringify({ postId: id });
+
+    const res = await axios.post(
+      "http://localhost:8000/posts/like",
+      body,
+      config
+    );
+
+    console.log(res.data.post.likes[0]._id);
     setIsLiked(true);
+    setLikes(res.data.post.likes);
+    dispatch({
+      type: POST_LIKED,
+      payload: {
+        _id: id,
+      },
+    });
   };
 
-  const handleUnLike = (postId) => {
-    dispatch(unLikePost(postId));
-    setIsLiked(false);
+  const unLike = async (id) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+
+      const res = await axios.delete(
+        "http://localhost:8000/posts/like/" + id,
+        config
+      );
+
+      dispatch({
+        type: POST_UNLIKED,
+        payload: {
+          _id: id,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  // const handleLike = (postId) => {
+  //   dispatch(likePost(postId));
+  //   setIsLiked(true);
+  // };
+
+  // const handleUnLike = (postId) => {
+  //   dispatch(unLikePost(postId));
+  //   setIsLiked(false);
+  // };
 
   return (
     <Container>
@@ -49,8 +106,8 @@ const DiscoverSection = () => {
                 <LikeButton
                   isLiked={isLiked}
                   post={post}
-                  handleLike={handleLike}
-                  handleUnLike={handleUnLike}
+                  addLike={addLike}
+                  unLike={unLike}
                 />
 
                 <span style={{ color: "#fff", padding: "0 5px" }}>

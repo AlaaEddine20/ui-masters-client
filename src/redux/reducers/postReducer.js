@@ -51,22 +51,6 @@ export const postReducer = (state = initialState, action) => {
         isLoading: false,
       };
 
-    case POST_LIKED:
-      return {
-        ...state,
-        likes: { ...state.posts, payload },
-        isLoading: false,
-        error: false,
-      };
-
-    case POST_UNLIKED:
-      return {
-        ...state,
-        likes: state.likes.filter((like) => like._id !== payload._id),
-        isLoading: false,
-        error: false,
-      };
-
     default:
       return state;
   }

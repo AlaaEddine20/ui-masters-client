@@ -2,6 +2,8 @@ import {
   POSTS_SUCCESS,
   POSTS_LOADING,
   POSTS_FAIL,
+  POST_LIKED,
+  POST_UNLIKED,
 } from "../constants/postConstants";
 
 const initialState = {
@@ -37,6 +39,21 @@ export const postsReducer = (state = initialState, action) => {
         error: payload,
       };
 
+    case POST_LIKED:
+      return {
+        ...state,
+        ...payload,
+        isLoading: false,
+        error: false,
+      };
+
+    case POST_UNLIKED:
+      return {
+        ...state,
+        likes: state.likes.filter((like) => like._id !== payload._id),
+        isLoading: false,
+        error: false,
+      };
     default:
       return state;
   }
