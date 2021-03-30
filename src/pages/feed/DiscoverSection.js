@@ -14,7 +14,7 @@ const DiscoverSection = () => {
 
   const posts = useSelector((state) => state.postsReducer.posts);
 
-  // const isLoading = useSelector((state) => state.postReducer.isLoading);
+  const isLoading = useSelector((state) => state.postReducer.isLoading);
 
   useEffect(() => {
     dispatch(getAllPosts());
@@ -29,12 +29,6 @@ const DiscoverSection = () => {
     dispatch(unLikePost(postId));
     setIsLiked(false);
   };
-
-  // useEffect(() => {
-  //   if (posts[0].likes.find((like) => like._id === posts[0].user._id)) {
-  //     setIsLiked(true);
-  //   }
-  // }, [posts[0].likes, posts[0].user._id]);
 
   return (
     <Container>

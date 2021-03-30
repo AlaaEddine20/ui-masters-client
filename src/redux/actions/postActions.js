@@ -124,7 +124,7 @@ export const likePost = (id) => async (dispatch) => {
 
     const body = JSON.stringify({ postId: id });
 
-    const res = await axios.put(
+    const res = await axios.post(
       "http://localhost:8000/posts/like",
       body,
       config
@@ -161,11 +161,8 @@ export const unLikePost = (id) => async (dispatch) => {
       },
     };
 
-    const body = JSON.stringify({ postId: id });
-
-    const res = await axios.put(
-      "http://localhost:8000/posts/unlike",
-      body,
+    const res = await axios.delete(
+      "http://localhost:8000/posts/like/" + id,
       config
     );
 

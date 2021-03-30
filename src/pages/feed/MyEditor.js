@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Editor from "react-code-live";
-import classnames from "classnames";
 import styles from "./../mycomponents/Editor.module.scss";
 
 function MyEditor({ post }) {
