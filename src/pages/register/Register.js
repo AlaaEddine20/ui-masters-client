@@ -37,9 +37,9 @@ const Register = () => {
   ) : (
     <>
       <div className={styles.login}>
-        <div className={styles.login_left}>
+        {/* <div className={styles.login_left}>
           <h1>Welcome back</h1>
-        </div>
+        </div> */}
         <form
           onChange={handleChange}
           onSubmit={handleSubmit}
@@ -49,9 +49,24 @@ const Register = () => {
           <div className={styles.inputs}>
             <input
               className="mb-3"
+              name="name"
+              type="text"
+              placeholder="Your name"
+              required
+            />
+            <input
+              className="mb-3"
+              name="lastname"
+              type="text"
+              placeholder="Your lastname"
+              required
+            />
+            <input
+              className="mb-3"
               name="email"
               type="email"
               placeholder="Email"
+              required
             />
 
             <input
@@ -59,24 +74,16 @@ const Register = () => {
               name="password"
               type={showPwt ? "text" : "password"}
               placeholder="Password"
+              required
             />
             <small onClick={() => setShowPwt(!showPwt)}>
               {showPwt ? "Hide" : "Show"}
             </small>
-            <button className="my-3" type="submit" value="Login">
-              Login
+            <button className="my-1" type="submit" value="Login">
+              Register
             </button>
           </div>
           <div className={styles.form_bottom}>
-            <p
-              style={{
-                color: "#f6f7f9",
-                fontSize: "0.9rem",
-                letterSpacing: "0.1rem",
-              }}
-            >
-              Back to login
-            </p>
             <Link
               style={{
                 color: "#35bea7",
@@ -89,7 +96,7 @@ const Register = () => {
               }}
               to="/login"
             >
-              <span className="mr-2">Register Now</span>
+              <span className="mr-2">Back to login</span>
               <i className="fas fa-angle-right"></i>
             </Link>
           </div>

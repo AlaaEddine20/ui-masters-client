@@ -5,9 +5,10 @@
   align-items: center;
 
   .post_container {
+    width: 100%;
     color: #f2f5f5;
     position: relative;
-    top: 120px;
+    // top: 120px;
     margin: 0 35px;
     .username {
       color: #37b9f1;
@@ -72,7 +73,6 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  margin-bottom: 2rem;
   background-color: rgba(22, 22, 22, 0.918);
-  padding: 10rem 0;
+  padding: 1rem 0;
 }

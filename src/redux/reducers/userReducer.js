@@ -6,6 +6,9 @@ import {
   UPDATE_USER_FAIL,
   AUTH_FAIL,
   UPDATE_USER_LOADING,
+  REGISTER_SUCCESS,
+  REGISTER_LOADING,
+  REGISTER_FAIL,
 } from "../constants/userConstants";
 
 const initialState = localStorage.getItem("persist:root")
@@ -79,6 +82,32 @@ export const userReducer = (state = initialState, action) => {
         isLoading: false,
         isLoggedIn: true,
         error: payload,
+      };
+
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        newUser: payload,
+        isLoggedIn: false,
+        isLoading: false,
+        error: false,
+      };
+
+    case REGISTER_LOADING:
+      return {
+        ...state,
+        isLoggedIn: false,
+        isLoading: true,
+        error: false,
+      };
+
+    case REGISTER_FAIL:
+      return {
+        ...state,
+        ...payload,
+        isLoading: false,
+        isLoggedIn: false,
+        error: true,
       };
 
     default:

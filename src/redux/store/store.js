@@ -19,7 +19,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const createStores = () => {
   const store = createStore(
     persistedReducer,
-    //initialState,
+    initialState,
     composedEnhancer(applyMiddleware(...middleware))
   );
   let persistor = persistStore(store);

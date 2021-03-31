@@ -30,7 +30,7 @@ const Profile = () => {
     <div className={styles.profile_container}>
       <div className={styles.wrapper_profile}>
         <div className={styles.profile_pic}>
-          {user.profilePic.length > 0 ? (
+          {user.profilePic ? (
             <>
               <Badge
                 onClick={removeImage}

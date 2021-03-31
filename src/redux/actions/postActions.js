@@ -3,8 +3,8 @@ import {
   POST_LOADING,
   POST_FAIL,
   POST_DELETE,
-  POST_LIKED,
-  POST_UNLIKED,
+  // POST_LIKED,
+  // POST_UNLIKED,
 } from "../constants/postConstants";
 
 import axios from "axios";

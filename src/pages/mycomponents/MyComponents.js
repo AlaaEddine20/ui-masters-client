@@ -8,6 +8,7 @@ import { getUserPosts, deletePost } from "../../redux/actions/postActions";
 import MyEditor from "./MyEditor";
 // styles
 import styles from "./Editor.module.scss";
+import { Container } from "react-bootstrap";
 
 const MyComponents = () => {
   const myPosts = useSelector((state) => state.postReducer.userPosts);
@@ -25,20 +26,22 @@ const MyComponents = () => {
   }, []);
 
   return myPosts?.length > 0 ? (
-    <div className={styles.wrapper}>
-      {myPosts.map((post, idx) => (
-        <div key={idx} className={styles.post_container}>
-          <div className={styles.post_info}>
-            <h5>{post.title}</h5>
+    <Container>
+      <div className={styles.wrapper}>
+        {myPosts.map((post, idx) => (
+          <div key={idx} className={styles.post_container}>
+            <div className={styles.post_info}>
+              <h5>{post.title}</h5>
+            </div>
+            <MyEditor
+              postId={post._id}
+              post={post}
+              deletePostFunction={deletePostFunction}
+            />
           </div>
-          <MyEditor
-            postId={post._id}
-            post={post}
-            deletePostFunction={deletePostFunction}
-          />
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </Container>
   ) : (
     <div style={{ color: "#fff" }}> You didn't post anything yet!</div>
   );

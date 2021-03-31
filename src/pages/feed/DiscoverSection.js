@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "../../redux/actions/postsActions";
-import { likePost, unLikePost } from "../../redux/actions/postActions";
+// import { likePost, unLikePost } from "../../redux/actions/postActions";
 import MyEditor from "./MyEditor";
 import styles from "./Discover.module.scss";
 import { Container } from "react-bootstrap";
 import LikeButton from "./LikeButton";
 import axios from "axios";
-import {
-  POST_LIKED,
-  POST_SUCCESS,
-  POST_UNLIKED,
-} from "../../redux/constants/postConstants";
+import { POST_LIKED, POST_UNLIKED } from "../../redux/constants/postConstants";
 
 const DiscoverSection = () => {
   const [likes, setLikes] = useState([]);
-  const [isLiked, setIsLiked] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -42,7 +37,7 @@ const DiscoverSection = () => {
     );
 
     console.log(res.data.post.likes[0]._id);
-    setIsLiked(true);
+    //setIsLiked(true);
     setLikes(res.data.post.likes);
     dispatch({
       type: POST_LIKED,
@@ -103,12 +98,7 @@ const DiscoverSection = () => {
                 <img src={post.user.profilePic} alt="profile-pic" />
               </span>
               <div className={styles.likes_container}>
-                <LikeButton
-                  isLiked={isLiked}
-                  post={post}
-                  addLike={addLike}
-                  unLike={unLike}
-                />
+                <LikeButton post={post} addLike={addLike} unLike={unLike} />
 
                 <span style={{ color: "#fff", padding: "0 5px" }}>
                   {post.likes.length}

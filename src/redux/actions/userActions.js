@@ -6,8 +6,13 @@ import {
   UPDATE_USER_FAIL,
   USER_LOGOUT,
   UPDATE_USER_SUCCESS,
+  REGISTER_SUCCESS,
+  REGISTER_LOADING,
+  REGISTER_FAIL,
 } from "../constants/userConstants";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router";
 
 export const userLoaded = () => async (dispatch) => {
   try {
@@ -44,6 +49,9 @@ export const userLoaded = () => async (dispatch) => {
 
 export const register = (userData) => async (dispatch) => {
   try {
+    dispatch({
+      type: REGISTER_LOADING,
+    });
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -58,16 +66,18 @@ export const register = (userData) => async (dispatch) => {
       config
     );
 
+    console.log(res.data);
+
     dispatch({
-      type: AUTH_SUCCESS,
+      type: REGISTER_SUCCESS,
       payload: res.data,
     });
-
-    dispatch(userLoaded());
   } catch (error) {
     dispatch({
-      type: AUTH_FAIL,
-      payload: "REQUEST REJECTED",
+      type: REGISTER_FAIL,
+      payload: {
+        error,
+      },
     });
   }
 };

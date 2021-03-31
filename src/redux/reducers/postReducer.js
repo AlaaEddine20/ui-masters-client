@@ -3,8 +3,6 @@ import {
   POST_LOADING,
   POST_FAIL,
   POST_DELETE,
-  POST_LIKED,
-  POST_UNLIKED,
 } from "../constants/postConstants";
 
 const initialState = {
