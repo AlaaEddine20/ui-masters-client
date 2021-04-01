@@ -1,31 +1,25 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from "react-router";
+import { toggleLike } from "../../redux/actions/postActions";
+import { getAllPosts } from "../../redux/actions/postsActions";
 
-const LikeButton = ({ addLike, unLike, post }) => {
+const LikeButton = ({ post }) => {
   const user = useSelector((state) => state.userReducer.user);
+  const dispatch = useDispatch();
 
-  const [isLiked, setIsLiked] = useState(
-    post.likes.find((like) => like._id === user._id)
-  );
+  const isLiked = post.likes.find((like) => like._id === user._id);
 
-  const toggleLike = () => {
-    setIsLiked((like) => !like);
-
-    try {
-      isLiked ? unLike(post._id) : addLike(post._id);
-    } catch (error) {
-      setIsLiked((like) => !like);
-      console.error(error);
-    }
+  const handleClick = () => {
+    dispatch(toggleLike(isLiked, post._id, user._id));
   };
 
   return (
     <>
-      {isLiked ? (
-        <i className="fas fa-heart" onClick={toggleLike}></i>
-      ) : (
-        <i className="far fa-heart" onClick={toggleLike}></i>
-      )}
+      <i
+        className={isLiked ? "fas fa-heart" : "far fa-heart"}
+        onClick={handleClick}
+      ></i>
     </>
   );
 };

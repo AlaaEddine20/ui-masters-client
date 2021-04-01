@@ -24,6 +24,7 @@ export const getAllPosts = () => async (dispatch) => {
     };
 
     const res = await axios.get("http://localhost:8000/posts", config);
+    console.log("RESPONSE", res.data)
 
     dispatch({
       type: POSTS_SUCCESS,

@@ -3,8 +3,8 @@ import {
   POST_LOADING,
   POST_FAIL,
   POST_DELETE,
-  // POST_LIKED,
-  // POST_UNLIKED,
+  POST_LIKED,
+  POST_UNLIKED,
 } from "../constants/postConstants";
 
 import axios from "axios";
@@ -110,73 +110,36 @@ export const deletePost = (postId) => async (dispatch) => {
   }
 };
 
-// export const likePost = (id) => async (dispatch) => {
-//   try {
-//     dispatch({
-//       type: POST_LOADING,
-//     });
+export const toggleLike = (liked, postId, userId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: liked ? POST_UNLIKED : POST_LIKED,
+      payload: {
+        postId,
+        userId,
+      },
+    });
 
-//     const config = {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${localStorage.getItem("token")}`,
-//       },
-//     };
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
 
-//     const body = JSON.stringify({ postId: id });
-
-//     const res = await axios.post(
-//       "http://localhost:8000/posts/like",
-//       body,
-//       config
-//     );
-
-//     dispatch({
-//       type: POST_LIKED,
-//       payload: {
-//         _id: id,
-//       },
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: POST_FAIL,
-//       payload: {
-//         error: error,
-//       },
-//     });
-//   }
-// };
-
-// export const unLikePost = (id) => async (dispatch) => {
-//   try {
-//     dispatch({
-//       type: POST_LOADING,
-//     });
-
-//     const config = {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${localStorage.getItem("token")}`,
-//       },
-//     };
-
-//     const res = await axios.delete(
-//       "http://localhost:8000/posts/like/" + id,
-//       config
-//     );
-
-//     dispatch({
-//       type: POST_UNLIKED,
-//       payload: {
-//         _id: id,
-//       },
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: POST_FAIL,
-//       payload: {
-//         error: error,
-//       },
-//     });
-//   }
-// };
+    if (liked) {
+      await axios.delete(`http://localhost:8000/posts/like/${postId}`, config);
+    } else {
+      const body = JSON.stringify({ postId });
+      await axios.post("http://localhost:8000/posts/like", body, config);
+    }
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: POST_FAIL,
+      payload: {
+        error,
+      },
+    });
+  }
+};

@@ -39,21 +39,33 @@ export const postsReducer = (state = initialState, action) => {
         error: payload,
       };
 
-    case POST_LIKED:
+    case POST_LIKED: {
       return {
         ...state,
-        ...payload,
-        isLoading: false,
-        error: false,
+        posts: state.posts.map((el) =>
+          el._id === payload.postId
+            ? {
+                ...el,
+                likes: [...el.likes, { _id: payload.userId }],
+              }
+            : { ...el, likes: [...el.likes] }
+        ),
       };
+    }
 
     case POST_UNLIKED:
       return {
         ...state,
-        likes: state.likes.filter((like) => like._id !== payload._id),
-        isLoading: false,
-        error: false,
+        posts: state.posts.map((el) =>
+          el._id === payload.postId
+            ? {
+                ...el,
+                likes: el.likes.filter((like) => like._id !== payload.userId),
+              }
+            : { ...el, likes: [...el.likes] }
+        ),
       };
+
     default:
       return state;
   }
