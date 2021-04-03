@@ -3,7 +3,7 @@ import Editor from "react-code-live";
 import styles from "./Discover.module.scss";
 
 function MyEditor({ post }) {
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
 
   const toggleShowCode = () => {
     setIsHidden(!isHidden);
@@ -11,7 +11,7 @@ function MyEditor({ post }) {
 
   return (
     <>
-      <button onClick={toggleShowCode}>
+      <button className={styles.show_hide_btn} onClick={toggleShowCode}>
         {isHidden ? <span>Show Code</span> : <span>Hide code</span>}
       </button>
       <Editor

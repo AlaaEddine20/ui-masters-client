@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "../../redux/actions/postsActions";
-// import { likePost, unLikePost } from "../../redux/actions/postActions";
 import MyEditor from "./MyEditor";
 import styles from "./Discover.module.scss";
 import { Container } from "react-bootstrap";
 import LikeButton from "./LikeButton";
-import axios from "axios";
-import { POST_LIKED, POST_UNLIKED } from "../../redux/constants/postConstants";
-import { toggleLike } from "../../redux/actions/postActions";
 
 const DiscoverSection = () => {
   const dispatch = useDispatch();
@@ -22,7 +18,6 @@ const DiscoverSection = () => {
   return (
     <Container>
       <div className={styles.wrapper}>
-        <h3 style={{ color: "#fff" }}>Discover other Devs components</h3>
         {posts?.map((post, id) => (
           <div key={id} className={styles.post_container}>
             <div className={styles.post_info}>

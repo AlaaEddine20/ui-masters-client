@@ -42,13 +42,13 @@ export const postsReducer = (state = initialState, action) => {
     case POST_LIKED: {
       return {
         ...state,
-        posts: state.posts.map((el) =>
-          el._id === payload.postId
+        posts: state.posts.map((post) =>
+          post._id === payload.postId
             ? {
-                ...el,
-                likes: [...el.likes, { _id: payload.userId }],
+                ...post,
+                likes: [...post.likes, { _id: payload.userId }],
               }
-            : { ...el, likes: [...el.likes] }
+            : { ...post, likes: [...post.likes] }
         ),
       };
     }
@@ -56,13 +56,13 @@ export const postsReducer = (state = initialState, action) => {
     case POST_UNLIKED:
       return {
         ...state,
-        posts: state.posts.map((el) =>
-          el._id === payload.postId
+        posts: state.posts.map((post) =>
+          post._id === payload.postId
             ? {
-                ...el,
-                likes: el.likes.filter((like) => like._id !== payload.userId),
+                ...post,
+                likes: post.likes.filter((like) => like._id !== payload.userId),
               }
-            : { ...el, likes: [...el.likes] }
+            : { ...post, likes: [...post.likes] }
         ),
       };
 
