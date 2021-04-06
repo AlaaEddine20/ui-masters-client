@@ -1,29 +1,47 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { Badge } from "react-bootstrap";
 // redux
 import { useSelector, useDispatch } from "react-redux";
-import { uploadProfilePic } from "./../../redux/actions/userActions";
+import { uploadProfilePic } from "../../redux/actions/userActions";
 import avatar from "./avatar.png";
 // styles
 import LoadingBar from "./LoadingBar";
-import styles from "./Profile.module.scss";
+import styles from "./Style.module.scss";
 
-const Profile = () => {
+const MyProfile = () => {
   const user = useSelector((state) => state.userReducer.user);
   const isLoading = useSelector((state) => state.userReducer.isLoading);
   const dispatch = useDispatch();
 
   const [image, setImage] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
+  const [userLoading, setUserLoading] = useState(false);
 
-  const id = user._id;
+  const userId = user._id;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(uploadProfilePic(id, image));
+    dispatch(uploadProfilePic(userId, image));
   };
 
-  const removeImage = () => {
-    setImage({ image: null });
+  const getClickedUser = async (currentUserId) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const res = await axios.get(
+        `http://localhost:8000/users/${currentUserId}`,
+        config
+      );
+      console.log(res.data);
+
+      // setCurrentUser(res.data)
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -32,14 +50,6 @@ const Profile = () => {
         <div className={styles.profile_pic}>
           {user.profilePic ? (
             <>
-              <Badge
-                onClick={removeImage}
-                className={styles.badge}
-                variant="danger"
-              >
-                Remove
-              </Badge>
-
               <img src={user.profilePic} alt="profile-pic" />
             </>
           ) : (
@@ -64,7 +74,10 @@ const Profile = () => {
             </form>
           </div>
         </div>
-        <div className={styles.username}>
+        <div
+          onClick={() => getClickedUser(user._id)}
+          className={styles.username}
+        >
           <h2 className="ml-3" style={{ color: "#8739f9" }}>
             {user.name}
             <span> {user.lastname}</span>
@@ -75,4 +88,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default MyProfile;

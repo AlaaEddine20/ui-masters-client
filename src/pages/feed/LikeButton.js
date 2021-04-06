@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation } from "react-router";
 import { toggleLike } from "../../redux/actions/postActions";
-import { getAllPosts } from "../../redux/actions/postsActions";
 
 const LikeButton = ({ post }) => {
   const user = useSelector((state) => state.userReducer.user);

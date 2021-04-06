@@ -6,7 +6,7 @@ import { Route, Redirect } from "react-router-dom";
 // components
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import Profile from "./pages/profile/Profile";
+import MyProfile from "./pages/profile/MyProfile";
 import SideBar from "./components/sidebar/SideBar";
 import MyComponents from "./pages/mycomponents/MyComponents";
 import AddNew from "./pages/add_new/AddNew";
@@ -34,7 +34,7 @@ function App() {
               <AddNew />
             </Route>
             <Route path="/profile">
-              <Profile />
+              <MyProfile />
             </Route>
             <Route path="/components/:id">
               <MyComponents />

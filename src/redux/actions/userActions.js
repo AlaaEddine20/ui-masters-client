@@ -11,41 +11,39 @@ import {
   REGISTER_FAIL,
 } from "../constants/userConstants";
 import axios from "axios";
-import { useSelector } from "react-redux";
-import { Redirect } from "react-router";
 
-export const userLoaded = () => async (dispatch) => {
-  try {
-    dispatch({
-      type: AUTH_LOADING,
-    });
+// export const getUserProfile = (userId) => async (dispatch) => {
+//   try {
+//     dispatch({
+//       type: AUTH_LOADING,
+//     });
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+//     const config = {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     };
 
-    const res = await axios.get("http://localhost:8000/users/me", config);
+//     const res = await axios.get(
+//       `http://localhost:8000/users/${userId}`,
+//       config
+//     );
 
-    const accessToken = res.data.accessToken;
-
-    if (res.ok) {
-      dispatch({
-        type: AUTH_SUCCESS,
-        payload: {
-          user: res.data.user,
-          token: accessToken,
-        },
-      });
-    }
-  } catch (error) {
-    dispatch({
-      type: AUTH_FAIL,
-      payload: "REQUEST REJECTED",
-    });
-  }
-};
+//     if (res.ok) {
+//       dispatch({
+//         type: AUTH_SUCCESS,
+//         payload: {
+//           userId: userId,
+//         },
+//       });
+//     }
+//   } catch (error) {
+//     dispatch({
+//       type: AUTH_FAIL,
+//       payload: "REQUEST REJECTED",
+//     });
+//   }
+// };
 
 export const register = (userData) => async (dispatch) => {
   try {
@@ -153,7 +151,7 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const uploadProfilePic = (id, image) => async (dispatch) => {
+export const uploadProfilePic = (userId, image) => async (dispatch) => {
   try {
     dispatch({
       type: UPDATE_USER_LOADING,
@@ -170,7 +168,7 @@ export const uploadProfilePic = (id, image) => async (dispatch) => {
     formData.append("image", image);
 
     const res = await axios.post(
-      `http://localhost:8000/users/${id}/upload`,
+      `http://localhost:8000/users/${userId}/upload`,
       formData,
       config
     );
