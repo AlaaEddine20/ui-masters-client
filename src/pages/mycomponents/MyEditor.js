@@ -3,7 +3,7 @@ import Editor from "react-code-live";
 import { useSelector } from "react-redux";
 import styles from "./Editor.module.scss";
 
-function MyEditor({ post, deletePostFunction, postId }) {
+function MyEditor({ post, deletePostFunction, updatePost, postId }) {
   const isLoading = useSelector((state) => state.postReducer.isLoading);
 
   return (

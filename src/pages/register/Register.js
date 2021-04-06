@@ -14,6 +14,7 @@ const Register = () => {
   });
 
   const [showPwt, setShowPwt] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.userReducer.isLoading);
@@ -21,6 +22,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(register(userRegisterData));
+    setIsRegistered(true);
   };
 
   const handleChange = (e) => {
@@ -36,10 +38,12 @@ const Register = () => {
     </div>
   ) : (
     <>
+      {isRegistered && (
+        <span className={styles.register_success} style={{ color: "green" }}>
+          Registered successfully!
+        </span>
+      )}
       <div className={styles.login}>
-        {/* <div className={styles.login_left}>
-          <h1>Welcome back</h1>
-        </div> */}
         <form
           onChange={handleChange}
           onSubmit={handleSubmit}

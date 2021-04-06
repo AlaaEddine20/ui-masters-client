@@ -91,19 +91,9 @@
   align-items: center;
 }
 
-.login_left {
-  width: 300px;
-  height: 440px;
-  background-color: #16113a;
+.register_success {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  h1 {
-    font-size: 3rem;
-    padding: 2rem;
-    color: #f5f9fc;
-    letter-spacing: 0.2rem;
-    font-weight: 400;
-  }
+  font-weight: 600;
 }

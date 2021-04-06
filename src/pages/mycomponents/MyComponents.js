@@ -12,12 +12,10 @@ import { Container } from "react-bootstrap";
 
 const MyComponents = () => {
   const myPosts = useSelector((state) => state.postReducer.userPosts);
-
   const dispatch = useDispatch();
-
   const userId = useParams();
 
-  const deletePostFunction = (postId) => {
+  const handleDeletePost = (postId) => {
     dispatch(deletePost(postId));
   };
 
@@ -36,7 +34,7 @@ const MyComponents = () => {
             <MyEditor
               postId={post._id}
               post={post}
-              deletePostFunction={deletePostFunction}
+              deletePostFunction={handleDeletePost}
             />
           </div>
         ))}

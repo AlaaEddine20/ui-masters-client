@@ -5,6 +5,7 @@ import {
   POST_DELETE,
   POST_LIKED,
   POST_UNLIKED,
+  POST_UPDATED,
 } from "../constants/postConstants";
 
 import axios from "axios";
@@ -143,3 +144,38 @@ export const toggleLike = (liked, postId, userId) => async (dispatch) => {
     });
   }
 };
+
+// export const updatePost = (updatedPostData, postId) => async (dispatch) => {
+//   try {
+//     dispatch({
+//       type: POST_LOADING,
+//     });
+
+//     const config = {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${localStorage.getItem("token")}`,
+//       },
+//     };
+
+//     const body = JSON.stringify(updatedPostData);
+
+//     const res = await axios.put(
+//       `http://localhost:8000/posts/${postId}`,
+//       body,
+//       config
+//     );
+
+//     dispatch({
+//       type: POST_UPDATED,
+//       payload: { userPosts: res.data },
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: POST_FAIL,
+//       payload: {
+//         error,
+//       },
+//     });
+//   }
+// };

@@ -10,8 +10,6 @@ import styles from "./Discover.module.scss";
 import axios from "axios";
 
 const DiscoverSection = () => {
-  const [loading, setLoading] = useState(false);
-
   const dispatch = useDispatch();
   const history = useHistory();
 

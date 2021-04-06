@@ -9,6 +9,7 @@ const ClickedUser = () => {
 
   const params = useParams();
   const history = useHistory();
+
   const fetchCurrentUSer = async () => {
     try {
       const config = {
@@ -22,11 +23,13 @@ const ClickedUser = () => {
       );
 
       setCurrentUser(res.data);
+      console.log(res.data);
     } catch (error) {
       console.log(error);
       history.push("/discover");
     }
   };
+
   useEffect(() => {
     fetchCurrentUSer();
   }, [params]);
@@ -34,8 +37,8 @@ const ClickedUser = () => {
   return (
     <div className={styles.profile_container}>
       {currentUser && (
-        <div className={styles.wrapper_profile}>
-          <div className={styles.profile_pic}>
+        <div className={styles.current_wrapper_profile}>
+          <div className={styles.current_profile_pic}>
             {currentUser.profilePic ? (
               <>
                 <img src={currentUser.profilePic} alt="profile-pic" />
