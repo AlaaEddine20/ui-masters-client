@@ -1,27 +1,57 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import avatar from "./avatar.png";
 import styles from "./Style.module.scss";
+import { useParams, useHistory } from "react-router-dom";
 
-const ClickedUser = (props) => {
+const ClickedUser = () => {
+  const [currentUser, setCurrentUser] = useState(false);
+
+  const params = useParams();
+  const history = useHistory();
+  const fetchCurrentUSer = async () => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const res = await axios.get(
+        `http://localhost:8000/users/${params.id}`,
+        config
+      );
+
+      setCurrentUser(res.data);
+    } catch (error) {
+      console.log(error);
+      history.push("/discover");
+    }
+  };
+  useEffect(() => {
+    fetchCurrentUSer();
+  }, [params]);
+
   return (
     <div className={styles.profile_container}>
-      <div className={styles.wrapper_profile}>
-        <div className={styles.profile_pic}>
-          {props.user.profilePic ? (
-            <>
-              <img src={props.user.profilePic} alt="profile-pic" />
-            </>
-          ) : (
-            <img src={avatar} alt="profile-pic" />
-          )}
+      {currentUser && (
+        <div className={styles.wrapper_profile}>
+          <div className={styles.profile_pic}>
+            {currentUser.profilePic ? (
+              <>
+                <img src={currentUser.profilePic} alt="profile-pic" />
+              </>
+            ) : (
+              <img src={avatar} alt="profile-pic" />
+            )}
+          </div>
+          <div className={styles.user_info}>
+            <h2 className="ml-3" style={{ color: "#8739f9" }}>
+              {currentUser.name}
+              <span> {currentUser.lastname}</span>
+            </h2>
+          </div>
         </div>
-        <div className={styles.username}>
-          <h2 className="ml-3" style={{ color: "#8739f9" }}>
-            {props.user.name}
-            <span> {props.user.lastname}</span>
-          </h2>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -14,34 +14,12 @@ const MyProfile = () => {
   const dispatch = useDispatch();
 
   const [image, setImage] = useState("");
-  const [currentUser, setCurrentUser] = useState({});
-  const [userLoading, setUserLoading] = useState(false);
 
   const userId = user._id;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(uploadProfilePic(userId, image));
-  };
-
-  const getClickedUser = async (currentUserId) => {
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-
-      const res = await axios.get(
-        `http://localhost:8000/users/${currentUserId}`,
-        config
-      );
-      console.log(res.data);
-
-      // setCurrentUser(res.data)
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -74,10 +52,7 @@ const MyProfile = () => {
             </form>
           </div>
         </div>
-        <div
-          onClick={() => getClickedUser(user._id)}
-          className={styles.username}
-        >
+        <div className={styles.username}>
           <h2 className="ml-3" style={{ color: "#8739f9" }}>
             {user.name}
             <span> {user.lastname}</span>

@@ -15,6 +15,7 @@ const LikeButton = ({ post }) => {
   return (
     <>
       <i
+      style={{ color: "#fff"}}
         className={isLiked ? "fas fa-heart" : "far fa-heart"}
         onClick={handleClick}
       ></i>

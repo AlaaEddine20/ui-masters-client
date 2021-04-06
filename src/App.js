@@ -15,6 +15,7 @@ import DiscoverSection from "./pages/feed/DiscoverSection";
 // css
 import "./App.css";
 import Register from "./pages/register/Register";
+import ClickedUser from "./pages/profile/ClickedUser";
 
 function App() {
   const user = useSelector((state) => state.userReducer.user);
@@ -41,6 +42,9 @@ function App() {
             </Route>
             <Route path="/discover">
               <DiscoverSection />
+            </Route>
+            <Route path="/user/:id">
+              <ClickedUser />
             </Route>
           </div>
         </div>

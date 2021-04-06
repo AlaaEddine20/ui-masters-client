@@ -25,7 +25,9 @@
       padding: 1rem;
       border-top: 1px solid #37b9f1;
 
-      .username {
+      .user_info {
+        display: flex;
+        width: 100%;
         color: #37b9f1;
         font-weight: 600;
         letter-spacing: 0.1rem;
