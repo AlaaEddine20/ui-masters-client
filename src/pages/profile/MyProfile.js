@@ -52,11 +52,12 @@ const MyProfile = () => {
             </form>
           </div>
         </div>
-        <div className={styles.username}>
-          <h2 className="ml-3" style={{ color: "#8739f9" }}>
+        <div className={styles.user_info}>
+          <h2 className="ml-3">
             {user.name}
             <span> {user.lastname}</span>
           </h2>
+          <h4>{user.email}</h4>
         </div>
       </div>
     </div>

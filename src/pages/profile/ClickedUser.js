@@ -10,7 +10,7 @@ const ClickedUser = () => {
   const params = useParams();
   const history = useHistory();
 
-  const fetchCurrentUSer = async () => {
+  const fetchCurrentUser = async () => {
     try {
       const config = {
         headers: {
@@ -18,7 +18,7 @@ const ClickedUser = () => {
         },
       };
       const res = await axios.get(
-        `http://localhost:8000/users/${params.id}`,
+        `${process.env.REACT_APP_URL}/users/${params.id}`,
         config
       );
 
@@ -31,7 +31,7 @@ const ClickedUser = () => {
   };
 
   useEffect(() => {
-    fetchCurrentUSer();
+    fetchCurrentUser();
   }, [params]);
 
   return (
