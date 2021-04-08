@@ -12,39 +12,6 @@ import {
 } from "../constants/userConstants";
 import axios from "axios";
 
-// export const getUserProfile = (userId) => async (dispatch) => {
-//   try {
-//     dispatch({
-//       type: AUTH_LOADING,
-//     });
-
-//     const config = {
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     };
-
-//     const res = await axios.get(
-//       `http://localhost:8000/users/${userId}`,
-//       config
-//     );
-
-//     if (res.ok) {
-//       dispatch({
-//         type: AUTH_SUCCESS,
-//         payload: {
-//           userId: userId,
-//         },
-//       });
-//     }
-//   } catch (error) {
-//     dispatch({
-//       type: AUTH_FAIL,
-//       payload: "REQUEST REJECTED",
-//     });
-//   }
-// };
-
 export const register = (userData) => async (dispatch) => {
   try {
     dispatch({
@@ -59,7 +26,7 @@ export const register = (userData) => async (dispatch) => {
     const body = JSON.stringify(userData);
 
     const res = await axios.post(
-      "http://localhost:8000/users/register",
+      `${process.env.REACT_APP_URL}/users/register`,
       body,
       config
     );
@@ -94,7 +61,7 @@ export const login = (userData) => async (dispatch) => {
     const body = JSON.stringify(userData);
 
     const res = await axios.post(
-      "http://localhost:8000/users/login",
+      `${process.env.REACT_APP_URL}/users/login`,
       body,
       config
     );
@@ -121,19 +88,24 @@ export const login = (userData) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   try {
-    // dispatch({
-    //   type: AUTH_LOADING,
-    // });
-    // const config = {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    // };
+    dispatch({
+      type: AUTH_LOADING,
+    });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
 
-    // const res = await axios.post("http://localhost:8000/users/logout", config);
+    const res = await axios.get(
+      `${process.env.REACT_APP_URL}/users/logout`,
+      config
+    );
 
-    // console.log("LOGOUT HERE ==>", res);
+    localStorage.clear();
+
+    window.location.replace("/login");
 
     dispatch({
       type: USER_LOGOUT,
@@ -168,7 +140,7 @@ export const uploadProfilePic = (userId, image) => async (dispatch) => {
     formData.append("image", image);
 
     const res = await axios.post(
-      `http://localhost:8000/users/${userId}/upload`,
+      `${process.env.REACT_APP_URL}/users/${userId}/upload`,
       formData,
       config
     );

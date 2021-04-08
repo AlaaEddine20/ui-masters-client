@@ -53,7 +53,7 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         ...payload,
-        user: null,
+        // user: null,
         isLoggedIn: false,
         isLoading: false,
         error: payload,
