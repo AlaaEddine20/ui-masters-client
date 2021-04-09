@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import { getAllPosts } from "../../redux/actions/postsActions";
 import { Container } from "react-bootstrap";
 import MyEditor from "./MyEditor";
 import LikeButton from "./LikeButton";
-import ClickedUser from "../profile/ClickedUser";
 import styles from "./Discover.module.scss";
 import axios from "axios";
 
