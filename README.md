@@ -1,4 +1,4 @@
-# Work in progress!
+# Let me introduce you my idea!
 
 This is an ambitious project of mine, i really liked the idea of creating a social-media for developers where they can upload and share their React components so i started to plan the idea and develop it in code with React, React redux. On the server side i have a fully working backend (check "ui-masters-server" repo).
 
