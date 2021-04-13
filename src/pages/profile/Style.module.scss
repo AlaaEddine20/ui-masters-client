@@ -74,9 +74,19 @@
   padding: 1rem;
 }
 .current_profile_pic {
-  width: 400px;
+  width: 300px;
 
   img {
-    width: 400px;
+    width: 300px;
+  }
+}
+
+.user_info {
+  display: flex;
+  flex-direction: column;
+
+  h2,
+  h4 {
+    color: #9147ff;
   }
 }

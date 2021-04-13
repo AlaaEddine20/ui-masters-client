@@ -19,11 +19,10 @@ const ClickedUser = () => {
       };
       const res = await axios.get(
         `${process.env.REACT_APP_URL}/users/${params.id}`,
-        config
+        config,
       );
 
-      setCurrentUser(res.data);
-      console.log(res.data);
+      setCurrentUser(res.data.user);
     } catch (error) {
       console.log(error);
       history.push("/discover");
@@ -48,10 +47,13 @@ const ClickedUser = () => {
             )}
           </div>
           <div className={styles.user_info}>
-            <h2 className="ml-3" style={{ color: "#8739f9" }}>
+            <h5 style={{ color: "#fefefe" }}>My name</h5>
+            <h2 style={{ color: "#8739f9" }}>
               {currentUser.name}
               <span> {currentUser.lastname}</span>
             </h2>
+            <h5 style={{ color: "#fefefe" }}>Get in touch</h5>
+            <h2 style={{ color: "#8739f9" }}>{currentUser.email}</h2>
           </div>
         </div>
       )}

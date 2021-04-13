@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState } from "react";
 // redux
 import { useSelector, useDispatch } from "react-redux";
@@ -10,7 +9,9 @@ import styles from "./Style.module.scss";
 
 const MyProfile = () => {
   const user = useSelector((state) => state.userReducer.user);
+  const currentUserPosts = useSelector((state) => state.postReducer.userPosts);
   const isLoading = useSelector((state) => state.userReducer.isLoading);
+
   const dispatch = useDispatch();
 
   const [image, setImage] = useState("");
@@ -53,7 +54,7 @@ const MyProfile = () => {
           </div>
         </div>
         <div className={styles.user_info}>
-          <h2 className="ml-3">
+          <h2>
             {user.name}
             <span> {user.lastname}</span>
           </h2>
