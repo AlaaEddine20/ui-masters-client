@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 // router
 import { Route, Redirect } from "react-router-dom";
 // components
-import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import MyProfile from "./pages/profile/MyProfile";
 import SideBar from "./components/sidebar/SideBar";
