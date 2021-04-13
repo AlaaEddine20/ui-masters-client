@@ -25,11 +25,7 @@ export const addPost = (postData) => async (dispatch) => {
 
     const body = JSON.stringify(postData);
 
-    const res = await axios.post(
-      `${process.env.REACT_APP_URL}/posts`,
-      body,
-      config
-    );
+    const res = await axios.post("/posts", body, config);
 
     dispatch({
       type: POST_SUCCESS,
@@ -63,10 +59,7 @@ export const getUserPosts = (id) => async (dispatch) => {
       },
     };
 
-    const res = await axios.get(
-      `${process.env.REACT_APP_URL}/posts/user_posts/${id}`,
-      config
-    );
+    const res = await axios.get(`/posts/user_posts/${id}`, config);
 
     dispatch({
       type: POST_SUCCESS,
@@ -97,7 +90,7 @@ export const deletePost = (postId) => async (dispatch) => {
       },
     };
 
-    await axios.delete(`${process.env.REACT_APP_URL}/posts/${postId}`, config);
+    await axios.delete(`/posts/${postId}`, config);
 
     dispatch({
       type: POST_DELETE,
@@ -133,13 +126,10 @@ export const toggleLike = (liked, postId, userId) => async (dispatch) => {
     };
 
     if (liked) {
-      await axios.delete(
-        `${process.env.REACT_APP_URL}/posts/like/${postId}`,
-        config
-      );
+      await axios.delete(`/posts/like/${postId}`, config);
     } else {
       const body = JSON.stringify({ postId });
-      await axios.post(`${process.env.REACT_APP_URL}/posts/like`, body, config);
+      await axios.post(`/posts/like`, body, config);
     }
   } catch (error) {
     console.log(error);
@@ -151,4 +141,3 @@ export const toggleLike = (liked, postId, userId) => async (dispatch) => {
     });
   }
 };
-

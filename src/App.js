@@ -28,9 +28,6 @@ function App() {
           <Header />
 
           <div className="home_right">
-            <Route path="/home">
-              <Home />
-            </Route>
             <Route path="/add_new">
               <AddNew />
             </Route>

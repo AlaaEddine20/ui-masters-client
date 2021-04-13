@@ -23,7 +23,7 @@ export const getAllPosts = () => async (dispatch) => {
       },
     };
 
-    const res = await axios.get(`${process.env.REACT_APP_URL}/posts`, config);
+    const res = await axios.get("/posts", config);
 
     dispatch({
       type: POSTS_SUCCESS,

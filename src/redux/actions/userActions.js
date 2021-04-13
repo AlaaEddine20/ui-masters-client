@@ -25,11 +25,7 @@ export const register = (userData) => async (dispatch) => {
 
     const body = JSON.stringify(userData);
 
-    const res = await axios.post(
-      `${process.env.REACT_APP_URL}/users/register`,
-      body,
-      config,
-    );
+    const res = await axios.post("/users/register", body, config);
 
     console.log(res.data);
 
@@ -60,11 +56,7 @@ export const login = (userData) => async (dispatch) => {
 
     const body = JSON.stringify(userData);
 
-    const res = await axios.post(
-      `${process.env.REACT_APP_URL}/users/login`,
-      body,
-      config,
-    );
+    const res = await axios.post("/users/login", body, config);
 
     const accessToken = res.data.accessToken;
     localStorage.setItem("token", accessToken);
@@ -139,11 +131,7 @@ export const uploadProfilePic = (userId, image) => async (dispatch) => {
     const formData = new FormData();
     formData.append("image", image);
 
-    const res = await axios.post(
-      `${process.env.REACT_APP_URL}/users/${userId}/upload`,
-      formData,
-      config,
-    );
+    const res = await axios.post(`/users/${userId}/upload`, formData, config);
 
     dispatch({
       type: UPDATE_USER_SUCCESS,

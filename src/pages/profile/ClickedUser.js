@@ -17,10 +17,7 @@ const ClickedUser = () => {
           "Content-Type": "application/json",
         },
       };
-      const res = await axios.get(
-        `${process.env.REACT_APP_URL}/users/${params.id}`,
-        config,
-      );
+      const res = await axios.get(`/users/${params.id}`, config);
 
       setCurrentUser(res.data.user);
     } catch (error) {
