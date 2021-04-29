@@ -12,12 +12,12 @@ function generateLinks(id) {
       path: "/discover",
       icon: <i className="fas fa-laptop-code"></i>,
     },
-    {
-      id: 2,
-      name: "My Profile",
-      path: "/profile",
-      icon: <i className="fas fa-user-ninja"></i>,
-    },
+    // {
+    //   id: 2,
+    //   name: "My Profile",
+    //   path: "/profile",
+    //   icon: <i className="fas fa-user-ninja"></i>,
+    // },
     {
       id: 4,
       name: "My Components",
